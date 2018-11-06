@@ -4,8 +4,9 @@
 	$password = "Institutg4!";
 	$host = "db759986335.hosting-data.io";
 	$port = "3306";
-	
-	$connexion = mysqli_connect($host, $user, $password, $port);
+	$nom_base = "db759986335";
+
+	$connexion = mysqli_connect($host, $user, $password, $nom_base);
 
 	if ($connexion == true) 
 	{
