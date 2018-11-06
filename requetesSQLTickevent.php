@@ -8,13 +8,5 @@
 
 	$connexion = mysqli_connect($host, $user, $password, $nom_base);
 
-	if ($connexion == true) 
-	{
-		echo "la base de données est connecté";
-	}
-	else 
-	{
-		echo "MERDE ALORS";
-	}
 
 ?>
