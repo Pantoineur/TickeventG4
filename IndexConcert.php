@@ -1,3 +1,9 @@
+<?php
+
+  session_start();
+
+?>
+
 <html>
 <head>
 	<title>Page concert</title>
@@ -25,16 +31,50 @@
             		<li class="nav-item">
               			<a class="nav-link" href="#">À propos</a>
             		</li>
+
+                <?php 
+                  if(isset($_SESSION['email']))
+                    {
+                      //header("Refresh:0;url=IndexConcert.php");
+                      ?>
+
+                      <form method="GET" action="IndexConcert.php">
+                      <li class="nav-item">
+                        <input type="submit" value="Déconnexion" name="deconnexion" class="btn btn-warning">
+                      </li>
+                      <?php
+                        if(isset($_GET['deconnexion']))
+                        {
+                          session_destroy();
+                          header("Refresh:0;url=IndexConcert.php");
+                         // header('location: "IndexConcert.php');
+                        }
+                          ?>
+
+                      </form>
+                     
+                <?php
+                    }
+
+                ?>
+
           		</ul>
         	</div>
     	</center>
       </nav>
     </header>
 
+
+ <br> <br> <br>
 	<?php
 
 
 		include 'requetesSQLTickevent.php';
+
+    if(isset($_SESSION['email']))
+      {
+          echo "Bonjour ".$_SESSION['email'];
+      }
 
 		
 	?>

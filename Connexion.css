@@ -1,0 +1,18 @@
+body{
+	background-color: black;
+}
+
+
+
+.encadrement{
+	width: 25%;
+	height: 42%;
+	background-color:#ffc107;
+	margin-left: auto;
+  	margin-right: auto;
+  	border-style: solid;
+  	border-color: #F5E762;
+  	border-right: 20px;
+  	border-radius: 10px;
+
+}
