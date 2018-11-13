@@ -13,8 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="IndexConcert.css">
 </head>
-
-  <body>
+<body>
 
     <header>
 
@@ -27,7 +26,7 @@
            <div class="collapse navbar-collapse" id="navbarCollapse">
                  <ul class="navbar-nav mr-auto">
                    <li class="nav-item active">
-                         <a class="nav-link" href="#">Concert <span class="sr-only">(current)</span></a>
+                         <a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item">
                          <a class="nav-link" href="#">À propos</a>
@@ -64,21 +63,33 @@
        </center>
      </nav>
    </header>
+   <br><br><br><br>
+   <center>
+    <form method="POST" action="PageConcert.php">
+      
 
-    <br>
+      <div class="col-3">
+      <input type="number" name="ID" placeholder="Entrer un ID" class="form-control input-sm" />
+      </div>
 
-      <form action="FormulaireAjoutConcert.php">
-        <input type="submit" class="btn btn-warning" value="Ajout concert" />
-      </form>
+      <div class="col-3">
+      <input type="text" name="Nom"  placeholder="Nom Concert" class="form-control input-sm"/>
+      </div>
 
+      <div class="col-3">
+      <input type="Date" name="Date"  placeholder="Date du concert" class="form-control input-sm"/>
+      </div>
 
+      <div class="col-3">
+      <input type="number" name="CP" placeholder="Entrer Code postale" class="form-control input-sm">
+      </div>
+      <input type="submit" value="Valider" name="Valider" class="btn btn-warning">
 
-    
-
+    </form>
+   </center>
    <footer>
         a
    </footer>
-
-  </body>
+</body>
 
 </html>
