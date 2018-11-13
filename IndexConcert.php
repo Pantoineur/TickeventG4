@@ -40,7 +40,7 @@
 
                       <form method="GET" action="IndexConcert.php">
                       <li class="nav-item">
-                        <input type="submit" value="Déconnexion" name="deconnexion" class="btn btn-warning">
+                        <input type="submit" value="Déconnexion" name="deconnexion" class="btn btn-outline-warning" class="deco" >
                       </li>
                       <?php
                         if(isset($_GET['deconnexion']))
@@ -64,13 +64,25 @@
       </nav>
     </header>
 
+<!-- <br><br><br>
+    <?php
+         //if (isset($_SESSION['email'])) {
+               
+    ?>
+          <div class="alert alert-success">
+    <?php
+           //echo "Vous êtes connecté";
+    ?>      
+          </div>
+    <?php
+        //}
 
- <br> <br> <br>
+    ?> -->
+
 	<?php
 
 
 		include 'requetesSQLTickevent.php';
-
 
     if(isset($_SESSION['email']))
       {
