@@ -71,6 +71,7 @@
 
 		include 'requetesSQLTickevent.php';
 
+
     if(isset($_SESSION['email']))
       {
           echo "Bonjour ".$_SESSION['email'];
