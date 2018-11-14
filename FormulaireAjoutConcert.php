@@ -65,19 +65,19 @@
    </header>
    <br><br><br><br>
    <center>
-    <form method="POST" action="PageConcert.php">
+    <form method="POST" action="requete.php">
       
 
-      <div class="col-3">
+     <!-- <div class="col-3">
       <input type="number" name="ID" placeholder="Entrer un ID" class="form-control input-sm" />
-      </div>
+      </div> -->
 
       <div class="col-3">
       <input type="text" name="Nom"  placeholder="Nom Concert" class="form-control input-sm"/>
       </div>
 
       <div class="col-3">
-      <input type="Date" name="Date"  placeholder="Date du concert" class="form-control input-sm"/>
+      <input type="date" name="Date"   placeholder="Date du concert" class="form-control input-sm"/>
       </div>
 
       <div class="col-3">

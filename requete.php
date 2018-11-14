@@ -7,4 +7,16 @@
  */
 require 'requetesSQLTickevent.php';
 
-$ajout = "INSERT INTO Concert (Nom,Date,CP) VALUES ('$_POST[Nom]','$_POST[Date]','$_POST[CP]' )";
+$nom = $_POST['Nom'];
+$date = $_POST['Date'];
+$cp = $_POST['CP'];
+
+if($connexion == NULL)
+{
+    echo 'erreur connexion base de donnees';
+}else
+{
+    $ajout = "INSERT INTO Concert (Nom,Date,CP) VALUES ('".$nom."','".$date."','".$cp."')";
+    $res = mysqli_query($connexion,"$ajout");
+    //printf("Message d'erreur:", $mysqli->errno);
+}
