@@ -77,12 +77,22 @@
       </div>
 
       <div class="col-3">
+      <textarea class="form-control" name="description" placeholder="Description concert" rows="3"></textarea>
+      </div>
+
+
+      <div class="col-3">
       <input type="date" name="Date"   placeholder="Date du concert" class="form-control input-sm"/>
       </div>
 
       <div class="col-3">
       <input type="number" name="CP" placeholder="Entrer Code postale" class="form-control input-sm">
       </div>
+
+      <div class="col-3">
+      <input type="file" name="Image"  placeholder="Image" class="form-control-file"/>
+      </div>
+
       <input type="submit" value="Valider" name="Valider" class="btn btn-warning">
 
     </form>
