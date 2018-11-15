@@ -52,8 +52,9 @@
                      
                 <?php
                     }
-
+					
                 ?>
+
 
           		</ul>
         	</div>
@@ -62,22 +63,26 @@
 	<form method="POST" action="paiementPlaces.php">
 		<select name="Rang">
 			<option>Rang</option>
-			<option>A</option>
-			<option>B</option>
-			<option>C</option>
+			<?php 
+				require 'requetesSQLTickevent.php';
+				$sql = "SELECT nom FROM rangs";
+				$res = mysqli_query($connexion,$sql);
+				while($data=mysqli_fetch_array($res)) 
+				{
+				   echo '<option>'.$data["nom"].'</option>'; //Attention à ne pas oublier le . qui sert à concaténer ton expression
+				}
+			?>
 		</select>
 		<select name="Place">
 			<option>Place</option>
-			<option>1</option>
-			<option>2</option>
-			<option>3</option>
-			<option>4</option>
-			<option>5</option>
-			<option>6</option>
-			<option>7</option>
-			<option>8</option>
-			<option>9</option>
-			<option>10</option>
+			<?php
+			$sql = "SELECT num FROM places";
+				$res = mysqli_query($connexion,$sql);
+				while($data=mysqli_fetch_array($res)) 
+				{
+				   echo '<option>'.$data["num"].'</option>'; //Attention à ne pas oublier le . qui sert à concaténer ton expression
+				}
+			?>
 		</select>
 		<input type="submit" name="valider" class="btn btn-warning">
 	</form>
