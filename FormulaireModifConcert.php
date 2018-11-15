@@ -65,7 +65,7 @@ session_start();
 </header>
 <br><br><br><br>
 <center>
-    <form method="POST" action="requete.php">
+    <form method="POST" action="requeteModif.php">
 
 
         <!-- <div class="col-3">

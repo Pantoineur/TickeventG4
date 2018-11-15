@@ -65,7 +65,7 @@
    </header>
    <br><br><br><br>
    <center>
-    <form method="POST" action="requete.php">
+    <form method="POST" action="requeteAjout.php">
       
 
      <!-- <div class="col-3">
