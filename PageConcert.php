@@ -39,7 +39,7 @@
                      //header("Refresh:0;url=IndexConcert.php");
                      ?>
 
-                     <form method="GET" action="IndexConcert.php">
+                     <form method="GET" action="PageConcert.php">
                      <li class="nav-item">
                        <input type="submit" value="Déconnexion" name="deconnexion" class="btn btn-outline-warning" class="deco" >
                      </li>
@@ -47,7 +47,7 @@
                        if(isset($_GET['deconnexion']))
                        {
                          session_destroy();
-                         header("Refresh:0;url=IndexConcert.php");
+                         header("Refresh:0;url=PageConcert.php");
                         // header('location: "IndexConcert.php');
                        }
                          ?>
@@ -66,12 +66,20 @@
    </header>
 
     <br>
+    <?php 
+      if(isset($_SESSION['email']))
+        {
+    ?>
+          <form action="FormulaireAjoutConcert.php">
+            <input type="submit" class="btn btn-warning" value="Ajout concert" />
+          </form>
+      <?php
+        }
+      ?>
 
-      <form action="FormulaireAjoutConcert.php">
-        <input type="submit" class="btn btn-warning" value="Ajout concert" />
+      <form action="PagePlaces.php">
+        <input type="submit" class="btn btn-warning" value="Réservez vos places !">
       </form>
-
-
 
     
 
