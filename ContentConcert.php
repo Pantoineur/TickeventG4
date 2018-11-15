@@ -57,6 +57,8 @@
                <?php
                    }
 
+
+
                ?>
 
                  </ul>
@@ -66,8 +68,15 @@
    </header>
 
 
+    <?php
+
+    require "requeteContent.php";
+
+
+    ?>
+
    <footer>
-        a
+
    </footer>
 </body>
 

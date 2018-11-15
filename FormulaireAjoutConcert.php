@@ -65,7 +65,7 @@
    </header>
    <br><br><br><br>
    <center>
-    <form method="POST" action="requeteAjout.php">
+    <form method="POST" action="requeteAjout.php" enctype="multipart/form-data">
       
 
      <!-- <div class="col-3">
@@ -90,7 +90,7 @@
       </div>
 
       <div class="col-3">
-      <input type="file" name="Image"  placeholder="Image" class="form-control-file"/>
+      <input type="file"  placeholder="Image" name="Image" class="form-control-file"/>
       </div>
 
       <input type="submit" value="Valider" name="Valider" class="btn btn-warning">
@@ -98,7 +98,7 @@
     </form>
    </center>
    <footer>
-        a
+
    </footer>
 </body>
 
