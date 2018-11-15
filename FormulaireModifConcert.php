@@ -77,12 +77,21 @@ session_start();
         </div>
 
         <div class="col-3">
+            <textarea class="form-control" name="descriptionModif" placeholder="Description concert" rows="3"></textarea>
+        </div>
+
+        <div class="col-3">
             <input type="date" name="dateModif"   placeholder="Date du concert" class="form-control input-sm"/>
         </div>
 
         <div class="col-3">
             <input type="number" name="cpModif" placeholder="Entrer Code postale" class="form-control input-sm">
         </div>
+
+        <div class="col-3">
+            <input type="file" name="ImageModif"  placeholder="Image" class="form-control-file"/>
+        </div>
+
         <input type="submit" value="Valider" name="Valider" class="btn btn-warning">
 
     </form>
