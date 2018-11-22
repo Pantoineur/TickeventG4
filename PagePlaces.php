@@ -60,31 +60,48 @@
         	</div>
     	</center>
       </nav>
-	<form method="POST" action="paiementPlaces.php">
+	<form method="POST" action="pagePlaces.php">
 		<select name="Rang">
-			<option>Rang</option>
-			<?php 
+      <?php
+        if (isset($_POST['Rang']))
+          echo "<option>".$_POST['Rang']."</option>";
+        else
+          echo "<option>Rang<option>";
 				require 'requetesSQLTickevent.php';
 				$sql = "SELECT nom FROM rangs";
 				$res = mysqli_query($connexion,$sql);
-				while($data=mysqli_fetch_array($res)) 
-				{
-				   echo '<option>'.$data["nom"].'</option>'; //Attention à ne pas oublier le . qui sert à concaténer ton expression
-				}
+        if (!isset($_POST['Rang']))
+        {
+            while($data=mysqli_fetch_array($res)) 
+            {
+              echo '<option>'.$data["nom"].'</option>'; 
+            }
+        }
+				
 			?>
 		</select>
-		<select name="Place">
-			<option>Place</option>
-			<?php
-			$sql = "SELECT num FROM places";
-				$res = mysqli_query($connexion,$sql);
-				while($data=mysqli_fetch_array($res)) 
-				{
-				   echo '<option>'.$data["num"].'</option>'; //Attention à ne pas oublier le . qui sert à concaténer ton expression
-				}
-			?>
-		</select>
-		<input type="submit" name="valider" class="btn btn-warning">
-	</form>
+    <input type="submit" name="check" class="btn btn-warning" value="Vérifier les places pour le rang choisi">
+  </form>
+      <?php
+        if (isset($_POST['Rang']))
+        {
+      ?>
+          <form method="POST" action="paiementPlaces.php">
+        		<select name="Place">
+        			<option>Place</option>
+        			<?php
+        			$sql = "SELECT num FROM places where Rang = '".$_POST['Rang']."'";
+        				$res = mysqli_query($connexion,$sql);
+        				while($data=mysqli_fetch_array($res)) 
+        				{
+        				   echo '<option>'.$data["num"].'</option>';
+        				}
+        			?>
+        		</select>
+            <input type="submit" name="valider" class="btn btn-warning">
+          </form>
+        <?php
+        }
+        ?>
 </body>
 </html>
