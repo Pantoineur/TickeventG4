@@ -19,13 +19,14 @@
  */
 
 require 'requetesSQLTickevent.php';
+$id = $_POST['ID'];
 
 if($connexion == NULL)
 {
     echo 'erreur connexion base de donnees';
 }else
 {
-    $recuperer = "SELECT * From Concert WHERE ID = 3";
+    $recuperer = "SELECT * From Concert WHERE ID = '".$id."'";
     $res = mysqli_query($connexion,"$recuperer");
     while ($tab = mysqli_fetch_array($res))
     {
@@ -39,5 +40,6 @@ if($connexion == NULL)
 
     }
 }
+//header("Refresh:0;url=ContentConcert.php");
 ?>
 </html>

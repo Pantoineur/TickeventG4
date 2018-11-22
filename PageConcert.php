@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="IndexConcert.css">
 </head>
 
-  <body>
+<body>
 
     <header>
 
@@ -23,7 +23,7 @@
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
        </button>
-       <center>
+
            <div class="collapse navbar-collapse" id="navbarCollapse">
                  <ul class="navbar-nav mr-auto">
                    <li class="nav-item active">
@@ -61,9 +61,9 @@
 
                  </ul>
            </div>
-       </center>
      </nav>
    </header>
+
 
     <br>
     <?php 
@@ -81,10 +81,46 @@
         <input type="submit" class="btn btn-warning" value="Réservez vos places !">
       </form>
 
-    
 
-   <footer>
-        a
+    <?php
+    require "requeteConcert.php";
+    echo'<h1 class="titre1"> CONCERT</h1>';
+    while ($tab = mysqli_fetch_array($res))
+    {
+        ?>
+    <form action="requeteContent.php" method="post">
+        <input type="hidden" name="ID" value=""> <?php $tab['ID'] ?> </input>
+        <?php
+        //echo "<img src='images/".$tab['Image']."'>";
+        echo '<div class="card" style="width: 18rem;">'
+            ."<img class=\"card-img-top\" src='images/".$tab['Image']."'>",
+            '<div class="card-body"> 
+              <h5 class="card-title">Nom: '.$tab['Nom']."</h5>",
+            ' Date : '.$tab['Date']."",
+            ' CP : '.$tab['CP']."",
+            ' <p class="card-text">Description : '.$tab['Description']."</p> ",
+        '<input type="submit" class="btn btn-primary" value="Réservez"> </input> </div></div>';
+
+        //'<div class="row">',
+        //'<div class="col-sm-6">',
+        // <div class="card" style="width: 18rem;">
+        // <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        // <div class="card-body">
+        // <h5 class="card-title">Card title</h5>
+        //  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        // <a href="#" class="btn btn-primary">Go somewhere</a>
+        //</div>
+//</div>
+        ?>
+    </form>
+<?php
+    }
+    ?>
+    ?>
+
+
+    <footer>
+
    </footer>
 
   </body>
