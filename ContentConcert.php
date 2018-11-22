@@ -19,7 +19,7 @@
     <header>
 
      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-       <a class="navbar-brand" href="#">Accueil</a>
+       <a class="navbar-brand" href="IndexConcert.php">Accueil</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
        </button>
@@ -27,7 +27,7 @@
            <div class="collapse navbar-collapse" id="navbarCollapse">
                  <ul class="navbar-nav mr-auto">
                    <li class="nav-item active">
-                         <a class="nav-link" href="#">Concert <span class="sr-only">(current)</span></a>
+                         <a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item">
                          <a class="nav-link" href="#">À propos</a>
@@ -70,7 +70,29 @@
 
     <?php
 
-    require "requeteContent.php";
+      require "requeteContent.php";
+
+      while ($tab = mysqli_fetch_array($res))
+        {
+        //echo "<img src='images/".$tab['Image']."'>";
+          echo '<div class=row>',
+              '<center>',
+              '<div class="col-md-6">',
+                    '<br><br>',
+                    '<div class="imageC">'."<img src='images/".$tab['Image']."'></div>",
+              '</div>',
+              '</center>',
+              '<div class="col-md-6" id ="gridC">',
+                  '<br> <br> <br>',
+                  '<div class="titreC"> Nom: '.$tab['Nom']."</div>",            
+                  '<div class="dateC" >Date : '.$tab['Date']."</div>",
+                  '<div class="cpC">CP : '.$tab['CP']."</div>",
+                  '<div class="descriptionC"> Description : '.$tab['Description']."</div>",
+              ' </div>',
+          '</div>';
+
+
+    }
 
 
     ?>
