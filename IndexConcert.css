@@ -1,5 +1,12 @@
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
 body{
     background-color: #8b8b8b;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -36,21 +43,24 @@ body{
 
 
 footer{
-background-color:#343a40!important;
+    background-color:#343a40!important;
+    margin-top: auto;
+    height:50px;
+    border-top: solid;
+    padding-top: 50px;
 
-position:fixed;
+    /*position: absolute;
 
-left: 0;
+    left: 0;
 
-bottom:0;
+    bottom:0px;
 
-width:100%;
+    width:100%;
 
-padding-top: 0px;
+    padding-top: 50px;
 
-height:50px;
 
-border-top: solid;
+    border-top: solid;*/
 
 }
 

@@ -89,10 +89,11 @@
     {
         ?>
     <form action="requeteContent.php" method="post">
-        <input type="hidden" name="ID" value=""> <?php $tab['ID'] ?> </input>
+        <!--<input type="hidden" name="ID" value=""> <?php $tab['ID'] ?> </input>-->
         <?php
         //echo "<img src='images/".$tab['Image']."'>";
         echo '<div class="card" style="width: 18rem;">'
+            ."<input type=\"hidden\" name=\"ID\" value=\"\">".$_POST['ID']." </input>"
             ."<img class=\"card-img-top\" src='images/".$tab['Image']."'>",
             '<div class="card-body"> 
               <h5 class="card-title">Nom: '.$tab['Nom']."</h5>",
@@ -116,7 +117,7 @@
 <?php
     }
     ?>
-    ?>
+
 
 
     <footer>
