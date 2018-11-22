@@ -9,13 +9,17 @@ body{
     z-index: 1030;
 }
 
-.titreC{
-
+#gridC{
+	text-align: center;
+	font-size: 25px;
 }
 
-.imageC{
-    float: left;
+.imageC img{
+    text-align: center;
+    width: 100%;
+    
 }
+
 
 
 
