@@ -36,6 +36,17 @@ body{
     border: solid;
 
 }
+.column {
+    padding: 25px;
+    columns: 3;
+
+    background: #8b8b8b;
+    width:100%;
+    display: table-column;
+}
+
+
+
 
 
 

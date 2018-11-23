@@ -85,22 +85,27 @@
     <?php
     require "requeteConcert.php";
     echo'<h1 class="titre1"> CONCERT</h1>';
+    ?>
+
+    <div class="row">
+            <?php
     while ($tab = mysqli_fetch_array($res))
     {
         ?>
-    <form action="requeteContent.php" method="post">
-        <!--<input type="hidden" name="ID" value=""> <?php $tab['ID'] ?> </input>-->
+        <div class="col-md-4">
+    <form action="ContentConcert.php?ID=<?= $tab['ID'] ?>" method="post">
+        <input type="hidden" name="ID" value=" <?php $_GET['ID'] ?>"> </input>
         <?php
+        echo 'bonjour' .$tab['ID'];
         //echo "<img src='images/".$tab['Image']."'>";
         echo '<div class="card" style="width: 18rem;">'
-            ."<input type=\"hidden\" name=\"ID\" value=\"\">".$_POST['ID']." </input>"
             ."<img class=\"card-img-top\" src='images/".$tab['Image']."'>",
-            '<div class="card-body"> 
-              <h5 class="card-title">Nom: '.$tab['Nom']."</h5>",
+            '<div class="card-body">',
+              '<h5 class="card-title">Nom: '.$tab['Nom']."</h5>",
             ' Date : '.$tab['Date']."",
             ' CP : '.$tab['CP']."",
             ' <p class="card-text">Description : '.$tab['Description']."</p> ",
-        '<input type="submit" class="btn btn-primary" value="Réservez"> </input> </div></div>';
+        '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>';
 
         //'<div class="row">',
         //'<div class="col-sm-6">',
@@ -114,10 +119,11 @@
 //</div>
         ?>
     </form>
+        </div>
 <?php
     }
     ?>
-
+    </div>
 
 
     <footer>

@@ -72,24 +72,14 @@
 
       require "requeteContent.php";
 
-      while ($tab = mysqli_fetch_array($res))
-        {
+    while ($tab = mysqli_fetch_array($res))
+    {
         //echo "<img src='images/".$tab['Image']."'>";
-          echo '<div class=row>',
-              '<center>',
-              '<div class="col-md-6">',
-                    '<br><br>',
-                    '<div class="imageC">'."<img src='images/".$tab['Image']."'></div>",
-              '</div>',
-              '</center>',
-              '<div class="col-md-6" id ="gridC">',
-                  '<br> <br> <br>',
-                  '<div class="titreC"> Nom: '.$tab['Nom']."</div>",            
-                  '<div class="dateC" >Date : '.$tab['Date']."</div>",
-                  '<div class="cpC">CP : '.$tab['CP']."</div>",
-                  '<div class="descriptionC"> Description : '.$tab['Description']."</div>",
-              ' </div>',
-          '</div>';
+        echo' <div class="imageC">'."<img src='images/".$tab['Image']."'></div>",
+            ' <div class="titreC"> Nom: '.$tab['Nom']."</div>",
+            ' <div class="dateC">Date : '.$tab['Date']."</div>",
+            ' <div class="cpC">CP : '.$tab['CP']."</div>",
+            ' <div class="descriptionC">Description : '.$tab['Description']."</div>";
 
 
     }
