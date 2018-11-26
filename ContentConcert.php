@@ -70,26 +70,43 @@
 
     <?php
 
-      require "requeteContent.php";
-
-    while ($tab = mysqli_fetch_array($res))
-    {
-        //echo "<img src='images/".$tab['Image']."'>";
-        echo' <div class="imageC">'."<img src='images/".$tab['Image']."'></div>",
-            ' <div class="titreC"> Nom: '.$tab['Nom']."</div>",
-            ' <div class="dateC">Date : '.$tab['Date']."</div>",
-            ' <div class="cpC">CP : '.$tab['CP']."</div>",
-            ' <div class="descriptionC">Description : '.$tab['Description']."</div>";
-
-
-    }
+      require "requeteContent.php"; 
+ 
+      while ($tab = mysqli_fetch_array($res)) 
+        { 
+        //echo "<img src='images/".$tab['Image']."'>"; 
+          echo '<div class=row>', 
+                   
+                  '<div class="col-md-6">', 
+                    '<br><br>', 
+                    '<div class="imageC">'."<img src='images/".$tab['Image']."'></div>", 
+                  '</div>', 
+                   
+                  '<div class="col-md-6" id ="gridC">', 
+                    '<br> <br> <br>', 
+                    '<div class="titreC"> Nom: '.$tab['Nom']."</div>",             
+                    '<div class="dateC" >Date : '.$tab['Date']."</div>", 
+                    '<div class="cpC">CP : '.$tab['CP']."</div>", 
+                    '<div class="descriptionC"> Description : '.$tab['Description']."</div>", 
+                    '<form method="GET" action="FormulaireModifConcert.php">',
+                      '<br>',
+                      '<input type="submit" value="Modifier" name="Modifier" class="btn btn-warning"  >',
+                    '</form>',
+                    '<form method="GET" action="">',
+                      '<input type="submit" value="Supprimer" name="supprimer" class="btn btn-danger"  >',
+                    '</form>',
+                    '</div>', 
+               '</div>'; 
+ 
+ 
+    } 
 
 
     ?>
 
-   <footer>
+   <!-- <footer> 
 
-   </footer>
+   </footer> -->
 </body>
 
 </html>

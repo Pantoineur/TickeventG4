@@ -23,10 +23,20 @@ body{
 
 }
 
-.imageC{
-    float: left;
-}
-
+#gridC{ 
+	text-align: center; 
+	font-size: 25px; 
+} 
+ 
+.imageC img{ 
+    
+    display: block;
+    min-height: 400px;
+    max-height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+} 
+ 
 .titre1
 {
     text-align: center;
@@ -47,13 +57,21 @@ body{
 
 
 
+.imgcard img{
 
+	min-height: 250px; 
+	max-height: 250px;
+	width: 100%;
+
+}
 
 
 
 
 
 footer{
+
+	position: relative;
     background-color:#343a40!important;
     margin-top: auto;
     height:50px;
@@ -72,6 +90,7 @@ footer{
 
 
     border-top: solid;*/
+
 
 }
 

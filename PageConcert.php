@@ -94,18 +94,21 @@
         ?>
         <div class="col-md-4">
     <form action="ContentConcert.php?ID=<?= $tab['ID'] ?>" method="post">
-        <input type="hidden" name="ID" value=" <?php $_GET['ID'] ?>"> </input>
+        <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
         <?php
-        echo 'bonjour' .$tab['ID'];
         //echo "<img src='images/".$tab['Image']."'>";
-        echo '<div class="card" style="width: 18rem;">'
-            ."<img class=\"card-img-top\" src='images/".$tab['Image']."'>",
+        echo '<center>',
+             '<div class="card" style="width: 18rem;">',
+             '<div class="imgcard">',
+             "<img class=\"card-img-top\" src='images/".$tab['Image']."'>",
+             '</div>',
             '<div class="card-body">',
               '<h5 class="card-title">Nom: '.$tab['Nom']."</h5>",
             ' Date : '.$tab['Date']."",
             ' CP : '.$tab['CP']."",
             ' <p class="card-text">Description : '.$tab['Description']."</p> ",
-        '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>';
+        '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>',
+            '</center>';
 
         //'<div class="row">',
         //'<div class="col-sm-6">',
@@ -126,7 +129,7 @@
     </div>
 
 
-    <footer>
+    <!-- <footer>
 
    </footer>
 
