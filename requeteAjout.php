@@ -10,9 +10,9 @@ require 'requetesSQLTickevent.php';
 $msg = "";
 $nom = $_POST['Nom'];
 $date = $_POST['Date'];
-$cp = $_POST['CP'];
 $description = $_POST['description'];
 $image = $_FILES['Image']['name'];
+$Salle_Concert = $_POST['SalleConcert'];
 
 
 if($connexion == NULL)
@@ -26,7 +26,7 @@ if($connexion == NULL)
     $description = $_POST['description'];
     $image = $_POST['Image'];*/
 
-    $ajout = "INSERT INTO Concert (Nom,Date,CP,Description, Image) VALUES ('".$nom."','".$date."','".$cp."','".$description."','$image')";
+    $ajout = "INSERT INTO Concert (Nom,Date,Description,Image,Nom_SalleConcerts) VALUES ('".$nom."','".$date."','".$description."','$image','".$Salle_Concert."')";
     $res = mysqli_query($connexion,"$ajout");
     //printf("Message d'erreur:", $mysqli->errno);
 

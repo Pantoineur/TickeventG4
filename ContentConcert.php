@@ -82,9 +82,7 @@
 
         '<div class="col-md-6">',
         '<br><br>',
-            '<center>',
             '<div class="imageC">'."<img src='images/".$tab['Image']."'></div>",
-            '</center>',
         '</div>',
 
 
@@ -126,9 +124,9 @@
 
     ?>
 
-   <footer>
+   <!-- <footer> 
 
-   </footer>
+   </footer> -->
 </body>
 
 </html>
