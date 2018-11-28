@@ -86,7 +86,6 @@
                     '<br> <br> <br>', 
                     '<div class="titreC"> Nom: '.$tab['Nom']."</div>",             
                     '<div class="dateC" >Date : '.$tab['Date']."</div>", 
-                    '<div class="cpC">CP : '.$tab['CP']."</div>", 
                     '<div class="descriptionC"> Description : '.$tab['Description']."</div>", 
                     '<form method="GET" action="FormulaireModifConcert.php">',
                       '<br>',

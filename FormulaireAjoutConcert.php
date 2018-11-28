@@ -85,9 +85,29 @@
       <input type="date" name="Date"   placeholder="Date du concert" class="form-control input-sm"/>
       </div>
 
+
       <div class="col-3">
-      <input type="number" name="CP" placeholder="Entrer Code postale" class="form-control input-sm">
-      </div>
+      <select class="form-control" name="SalleConcert">
+         <?php
+            if (isset($_POST['SalleConcert']))
+              echo "<option>".$_POST['SalleConcert']."</option>";
+            else
+            echo "<option>salle concert<option>";
+            require 'requetesSQLTickevent.php';
+            $sql = "SELECT nom FROM salleconcerts";
+            $res = mysqli_query($connexion,$sql);
+            if (!isset($_POST['SalleConcert']))
+            {
+                while($data=mysqli_fetch_array($res)) 
+              {
+                echo '<option>'.$data["nom"].'</option>'; 
+              }
+            }
+        
+      ?>
+    </select>
+    </div>
+
 
       <div class="col-3">
       <input type="file"  placeholder="Image" name="Image" class="form-control-file"/>
