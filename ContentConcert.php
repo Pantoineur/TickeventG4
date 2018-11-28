@@ -70,17 +70,56 @@
 
     <?php
 
-      require "requeteContent.php";
+    require "requeteContent.php";
+
 
     while ($tab = mysqli_fetch_array($res))
     {
+        echo 'salut'.$_GET['ID'];
+        echo 'salut'.$tab['ID'];
         //echo "<img src='images/".$tab['Image']."'>";
-        echo' <div class="imageC">'."<img src='images/".$tab['Image']."'></div>",
-            ' <div class="titreC"> Nom: '.$tab['Nom']."</div>",
-            ' <div class="dateC">Date : '.$tab['Date']."</div>",
-            ' <div class="cpC">CP : '.$tab['CP']."</div>",
-            ' <div class="descriptionC">Description : '.$tab['Description']."</div>";
+        echo '<div class=row>',
 
+        '<div class="col-md-6">',
+        '<br><br>',
+            '<center>',
+            '<div class="imageC">'."<img src='images/".$tab['Image']."'></div>",
+            '</center>',
+        '</div>',
+
+
+        '<div class="col-md-6" id ="gridC">',
+        '<br> <br> <br>',
+            '<div class="titreC"> Nom: '.$tab['Nom']."</div>",
+            '<div class="dateC" >Date : '.$tab['Date']."</div>",
+            '<div class="descriptionC"> Description : '.$tab['Description']."</div>";
+
+
+        if(isset($_SESSION['email']))
+        {
+            ?>
+
+
+            <form method="POST" action="FormulaireModifConcert.php?ID=<?= $tab['ID'] ?>">
+                <br>
+                <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>
+                <input type="submit" value="Modifier" name="Modifier" class="btn btn-warning">
+            </form>
+            <form method="GET" action="">
+                <input type="submit" value="Supprimer" name="supprimer" class="btn btn-danger">
+            </form>
+
+            <?php
+        }
+        ?>
+        <form method="post" action="PagePlaces.php?ID=<?= $tab['ID'] ?>">
+            <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>
+            <input type="submit" class="btn btn-warning" value="Réservez vos places !">
+        </form>
+
+
+        </div> </div>
+    <?php
 
     }
 

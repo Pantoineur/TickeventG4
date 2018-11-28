@@ -3,9 +3,9 @@
   session_start();
 
 ?>
-
 <html>
 <head>
+
 	<title>Page concert</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -13,7 +13,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="IndexConcert.css">
 </head>
-<body>
+
 
 	<header>
 
@@ -63,38 +63,18 @@
     	</center>
       </nav>
     </header>
-
-<!-- <br><br><br>
-    <?php
-         //if (isset($_SESSION['email'])) {
-               
-    ?>
-          <div class="alert alert-success">
-    <?php
-           //echo "Vous êtes connecté";
-    ?>      
-          </div>
-    <?php
-        //}
-
-    ?> -->
-
-	<?php
+<body>
+<div class="SlideNews">
+    <img src="images/Slider.png" class="imageNews">
+    <div class="barreImage"></div>
+</div>
 
 
-		include 'requetesSQLTickevent.php';
 
-    if(isset($_SESSION['email']))
-      {
-          echo "Bonjour ".$_SESSION['email'];
-      }
-
-		
-	?>
-
-	<footer>
+</body>
+	<footer class="footer">
 		a
 	</footer>
-</body>
+
 
 </html> 

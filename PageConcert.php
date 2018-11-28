@@ -77,14 +77,12 @@
         }
       ?>
 
-      <form action="PagePlaces.php">
-        <input type="submit" class="btn btn-warning" value="Réservez vos places !">
-      </form>
+
 
 
     <?php
     require "requeteConcert.php";
-    echo'<h1 class="titre1"> CONCERT</h1>';
+    echo'<h1 class="titreConcert"> CONCERT</h1>';
     ?>
 
     <div class="row">
@@ -94,7 +92,7 @@
         ?>
         <div class="col-md-4">
     <form action="ContentConcert.php?ID=<?= $tab['ID'] ?>" method="post">
-        <input type="hidden" name="ID" value=" <?php $_GET['ID'] ?>"> </input>
+        <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>
         <?php
         echo 'bonjour' .$tab['ID'];
         //echo "<img src='images/".$tab['Image']."'>";
@@ -103,7 +101,6 @@
             '<div class="card-body">',
               '<h5 class="card-title">Nom: '.$tab['Nom']."</h5>",
             ' Date : '.$tab['Date']."",
-            ' CP : '.$tab['CP']."",
             ' <p class="card-text">Description : '.$tab['Description']."</p> ",
         '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>';
 

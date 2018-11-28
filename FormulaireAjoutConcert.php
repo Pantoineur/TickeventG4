@@ -66,11 +66,7 @@
    <br><br><br><br>
    <center>
     <form method="POST" action="requeteAjout.php" enctype="multipart/form-data">
-      
 
-     <!-- <div class="col-3">
-      <input type="number" name="ID" placeholder="Entrer un ID" class="form-control input-sm" />
-      </div> -->
 
       <div class="col-3">
       <input type="text" name="Nom"  placeholder="Nom Concert" class="form-control input-sm"/>
@@ -83,10 +79,6 @@
 
       <div class="col-3">
       <input type="date" name="Date"   placeholder="Date du concert" class="form-control input-sm"/>
-      </div>
-
-      <div class="col-3">
-      <input type="number" name="CP" placeholder="Entrer Code postale" class="form-control input-sm">
       </div>
 
       <div class="col-3">

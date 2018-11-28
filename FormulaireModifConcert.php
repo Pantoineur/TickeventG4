@@ -65,7 +65,9 @@ session_start();
 </header>
 <br><br><br><br>
 <center>
-    <form method="POST" action="requeteModif.php">
+    <form method="POST" action="requeteModif.php?<?php echo $_GET['ID'] ?>">
+
+       <!-- <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>-->
 
 
         <!-- <div class="col-3">
@@ -82,10 +84,6 @@ session_start();
 
         <div class="col-3">
             <input type="date" name="dateModif"   placeholder="Date du concert" class="form-control input-sm"/>
-        </div>
-
-        <div class="col-3">
-            <input type="number" name="cpModif" placeholder="Entrer Code postale" class="form-control input-sm">
         </div>
 
         <div class="col-3">

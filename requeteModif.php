@@ -5,18 +5,21 @@
  * Date: 15/11/2018
  * Time: 10:07
  */
+
+require 'requetesSQLTickevent.php';
 $nomModif = $_POST['nomModif'];
 $dateModif = $_POST['dateModif'];
-$cpModif = $_POST['cpModif'];
 $descriptionModif = $_POST['descriptionModif'];
 $imageModif = $_POST['ImageModif'];
+$id = $_GET['ID'];
+
 
 if($connexion == NULL)
 {
     echo 'erreur connexion base de donnees';
 }else {
 
-    $update = "UPDATE Concert SET Nom = \"".$nomModif."\",Date = \"".$dateModif."\", CP = \"".$cpModif."\", Description = \"".$descriptionModif."\", Image = \"".$imageModif."\" WHERE ID =1";
+    $update = "UPDATE concert SET Nom = \"".$nomModif."\",Date = \"".$dateModif."\", Description = \"".$descriptionModif."\", Image = $imageModif WHERE ID = \"".$id."";
     echo $update;
     $res = mysqli_query($connexion,"$update");
     printf("Message d'erreur:", mysqli_errno($connexion));
