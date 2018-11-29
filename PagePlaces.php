@@ -103,5 +103,23 @@
         <?php
         }
         ?>
+
+
+<form action="ConfirmationPaiement.php" method="POST">
+    <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+            data-amount="5099"
+            data-currency="eur"
+            data-name="Stripe.com"
+            data-description="Example charge"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="French"
+            data-zip-code="true">
+    </script>
+</form>
+
+
+
 </body>
 </html>

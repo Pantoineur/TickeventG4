@@ -65,35 +65,71 @@ session_start();
 </header>
 <br><br><br><br>
 <center>
-    <form method="POST" action="requeteModif.php?<?php echo $_GET['ID'] ?>">
+    <?php
+    require "requeteContent.php";
 
-       <!-- <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>-->
+
+    while ($tab = mysqli_fetch_array($res))
+    {
+        ?>
 
 
-        <!-- <div class="col-3">
-         <input type="number" name="ID" placeholder="Entrer un ID" class="form-control input-sm" />
-         </div> -->
+        <form method="POST" action="requeteModif.php?ID=<?= $tab['ID'] ?>">
 
-        <div class="col-3">
-            <input type="text" name="nomModif"  placeholder="Nom Concert" class="form-control input-sm"/>
-        </div>
+            <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
 
-        <div class="col-3">
-            <textarea class="form-control" name="descriptionModif" placeholder="Description concert" rows="3"></textarea>
-        </div>
 
-        <div class="col-3">
-            <input type="date" name="dateModif"   placeholder="Date du concert" class="form-control input-sm"/>
-        </div>
+            <!-- <div class="col-3">
+             <input type="number" name="ID" placeholder="Entrer un ID" class="form-control input-sm" />
+             </div> -->
 
-        <div class="col-3">
-            <input type="file" name="ImageModif"  placeholder="Image" class="form-control-file"/>
-        </div>
+            <div class="col-3">
+                <input type="text" name="nomModif" placeholder="Nom Concert" class="form-control input-sm"/>
+            </div>
 
-        <input type="submit" value="Valider" name="Valider" class="btn btn-warning">
+            <div class="col-3">
+                <textarea class="form-control" name="descriptionModif" placeholder="Description concert"
+                          rows="3"></textarea>
+            </div>
 
-    </form>
-</center>
+            <div class="col-3">
+                <input type="date" name="dateModif" placeholder="Date du concert" class="form-control input-sm"/>
+            </div>
+
+            <div class="col-3">
+                <select class="form-control" name="SalleConcertModif">
+                    <?php
+                    if (isset($_POST['SalleConcertModif']))
+                        echo "<option>".$_POST['SalleConcertModif']."</option>";
+                    else
+                        echo "<option>salle concert<option>";
+                    require 'requetesSQLTickevent.php';
+                    $sql = "SELECT nom FROM salleconcerts";
+                    $res = mysqli_query($connexion,$sql);
+                    if (!isset($_POST['SalleConcertModif']))
+                    {
+                        while($data=mysqli_fetch_array($res))
+                        {
+                            echo '<option>'.$data["nom"].'</option>';
+                        }
+                    }
+
+                    ?>
+                </select>
+            </div>
+
+            <div class="col-3">
+                <input type="file" name="ImageModif" placeholder="Image" class="form-control-file"/>
+            </div>
+
+            <input type="submit" value="Valider" name="Valider" class="btn btn-warning">
+
+        </form>
+    <?php
+    }
+    ?>
+        </center>
+
 <footer>
     a
 </footer>

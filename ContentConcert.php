@@ -90,7 +90,7 @@
         '<br> <br> <br>',
             '<div class="titreC"> Nom: '.$tab['Nom']."</div>",
             '<div class="dateC" >Date : '.$tab['Date']."</div>",
-            '<div class="descriptionC"> Description : '.$tab['Description']."</div>";
+            '<div class="descriptionC"> Description :'.$tab['Description']."</div>";
 
 
         if(isset($_SESSION['email']))
@@ -100,10 +100,11 @@
 
             <form method="POST" action="FormulaireModifConcert.php?ID=<?= $tab['ID'] ?>">
                 <br>
-                <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>
+                <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
                 <input type="submit" value="Modifier" name="Modifier" class="btn btn-warning">
             </form>
-            <form method="GET" action="">
+            <form method="POST" action="requeteSupprimer.php?ID=<?= $tab['ID'] ?>">
+                <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
                 <input type="submit" value="Supprimer" name="supprimer" class="btn btn-danger">
             </form>
 

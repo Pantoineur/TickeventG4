@@ -18,20 +18,31 @@ body{
     left: 0;
     z-index: 1030;
 }
-.slideNews
+.SlideNews
 {
-    margin-top: 5%;
+    margin-left: 12%;
+    margin-top: 2%;
+    width:300%;
+
+}
+.imageNews{
+    width: 25%;
+}
+
+.SlideConcert
+{
+    margin-top: 2%;
     margin-left: 20%;
     margin-right:10%;
     border-color: #D5B948;
 }
-.imageNews{
+.imageConcert{
     width: 80%;
     border-radius: 50px;
     border: solid;
     border-color: #D5B948;
 }
-.barreImage{
+.barreImageConcert{
     border: solid;
     height: 2px;
     background-color: #D5B948;
@@ -49,6 +60,7 @@ body{
 
 .titreConcert
 {
+    margin-top: 2%;
     text-align: center;
 }
 
@@ -68,6 +80,9 @@ body{
 #gridC{
     text-align: center;
     font-size: 25px;
+
+    word-wrap: break-word;
+
 }
 
 .imageC img{
@@ -77,6 +92,7 @@ body{
     max-height: 500px;
     margin-left: auto;
     margin-right: auto;
+    width:50%
 }
 .imgcard img{
     min-height: 250px;

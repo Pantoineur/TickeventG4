@@ -66,21 +66,24 @@
 
 
     <br>
-    <?php 
-      if(isset($_SESSION['email']))
-        {
-    ?>
-          <form action="FormulaireAjoutConcert.php">
-            <input type="submit" class="btn btn-warning" value="Ajout concert" />
-          </form>
-      <?php
-        }
-      ?>
 
-
-
+    <div class="SlideConcert">
+        <img src="images/SliderConcert.png" class="imageConcert">
+        <div class="barreImageConcert"></div>
+    </div>
 
     <?php
+    if(isset($_SESSION['email']))
+    {
+        ?>
+        <form action="FormulaireAjoutConcert.php">
+            <input type="submit" class="btn btn-warning" value="Ajout concert" />
+        </form>
+        <?php
+    }
+
+
+
     require "requeteConcert.php";
     echo'<h1 class="titreConcert"> CONCERT</h1>';
     ?>

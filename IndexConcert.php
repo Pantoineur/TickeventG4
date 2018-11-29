@@ -65,15 +65,14 @@
     </header>
 <body>
 <div class="SlideNews">
-    <img src="images/Slider.png" class="imageNews">
-    <div class="barreImage"></div>
+    <img src="images/SliderNews.png" class="imageNews">
 </div>
 
 
 
 </body>
-	<footer class="footer">
-		a
+	<footer>
+
 	</footer>
 
 
