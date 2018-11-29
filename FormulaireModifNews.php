@@ -1,13 +1,12 @@
 <?php
 
-  session_start();
-
+ session_start();
 
 ?>
 
 <html>
 <head>
-    <title>Concert</title>
+    <title>Page concert</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -57,8 +56,6 @@
                <?php
                    }
 
-
-
                ?>
 
                  </ul>
@@ -66,65 +63,48 @@
        </center>
      </nav>
    </header>
-
-
-    <?php
-
+   <br><br><br><br>
+   <center>
+   
+   <?php
     require "requeteContentNews.php";
 
 
     while ($tab = mysqli_fetch_array($res))
     {
-        //echo "<img src='images/".$tab['Image']."'>";
-        echo '<div class=row>',
-
-        '<div class="col-md-6">',
-        '<br><br>',
-            '<div class="imageC">'."<img src='images/".$tab['Image']."'></div>",
-        '</div>',
-
-
-        '<div class="col-md-6" id ="gridC">',
-        '<br> <br> <br>',
-            '<div class="titreC"> Titre: '.$tab['Titre']."</div>",
-            '<div class="descriptionC"> Contenu : '.$tab['Contenu']."</div>",
-            '<div class="DateTime"> Date : '.$tab['DateAjout']."</div>";
-
-
-       if(isset($_SESSION['email']))
-        {
-            ?>
-
-
-            <form method="POST" action="FormulaireModifNews.php?ID=<?= $tab['ID'] ?>">
-                <br>
-                <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>
-                <input type="submit" value="Modifier" name="Modifier" class="btn btn-warning">
-            </form>
-            <form method="POST" action="requeteSupprimerNews.php?ID=<?= $tab['ID'] ?>">
-                <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
-                <input type="submit" value="Supprimer" name="supprimer" class="btn btn-danger">
-            </form>
-            <?php
-        }
         ?>
-         <form method="post" action="PagePlaces.php?ID=<?= $tab['ID'] ?>">
-            <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>
-            <input type="submit" class="btn btn-warning" value="Réservez vos places !">
-        </form>
 
 
-        </div> </div>
-     <?php
+        <form method="POST" action="requeteModifNews.php?ID=<?= $tab['ID'] ?>" enctype="multipart/form-data">
 
+            <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
+
+
+
+      <div class="col-3">
+      <input type="text" name="titreModif"  placeholder="Titre News" class="form-control input-sm"/>
+      </div>
+
+      <div class="col-3">
+      <textarea class="form-control" name="contenuModif" placeholder="contenu de la news" rows="3"></textarea>
+      </div>
+
+
+      <div class="col-3">
+      <input type="file"  placeholder="Image News" name="ImageModif" class="form-control-file"/>
+      </div>
+
+      <input type="submit" value="Valider" name="Valider" class="btn btn-warning">
+
+    </form>
+
+        <?php
     }
+    ?>
+   </center>
+   <footer>
 
-
-    ?> 
-
-   <!-- <footer> 
-
-   </footer> -->
+   </footer>
 </body>
 
 </html>
