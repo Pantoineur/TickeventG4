@@ -74,7 +74,7 @@ session_start();
         ?>
 
 
-        <form method="POST" action="requeteModif.php?ID=<?= $tab['ID'] ?>">
+        <form method="POST" action="requeteModif.php?ID=<?= $tab['ID'] ?>" enctype="multipart/form-data">
 
             <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
 
