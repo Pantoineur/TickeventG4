@@ -64,14 +64,75 @@
       </nav>
     </header>
 <body>
+
 <div class="SlideNews">
     <img src="images/SliderNews.png" class="imageNews">
 </div>
 
+  <?php 
+    if(isset($_SESSION['email']))
+      {
+  ?>
+    <form action="FormulaireAjoutNews.php">
+        <input type="submit" class="btn btn-warning" value="Ajouter un News" />
+    </form>
+  <?php
+      }
+  ?>
+
+
+
+  <?php
+    require "requeteNews.php";
+    echo'<h1 class="titreConcert"> NEWS </h1>';
+    ?>
+
+    <div class="row">
+            <?php
+    while ($tab = mysqli_fetch_array($res))
+    {
+        ?>
+        <div class="col-md-4">
+    <form action="ContentNews.php?ID=<?= $tab['ID'] ?>" method="post">
+        <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
+        <?php
+        //echo "<img src='images/".$tab['Image']."'>";
+        echo '<center>',
+             '<div class="card" style="width: 18rem;">',
+             '<div class="imgcard">',
+             "<img class=\"card-img-top\" src='images/".$tab['Image']."'>",
+             '</div>',
+            '<div class="card-body">',
+              '<h5 class="card-title">Titre: '.$tab['Titre']."</h5>",
+              ' Date : '.$tab['DateAjout']."",
+            ' <p class="card-text">Description : '.$tab['Contenu']."</p> ",
+
+        '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>',
+            '</center>';
+
+        //'<div class="row">',
+        //'<div class="col-sm-6">',
+        // <div class="card" style="width: 18rem;">
+        // <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+        // <div class="card-body">
+        // <h5 class="card-title">Card title</h5>
+        //  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        // <a href="#" class="btn btn-primary">Go somewhere</a>
+        //</div>
+//</div>
+        ?>
+
+    </form>
+        </div>
+<?php
+    }
+    ?>
+    </div>
+
 
 
 </body>
-	<footer>
+	<footer class="footer">
 
 	</footer>
 
