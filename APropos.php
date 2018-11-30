@@ -1,0 +1,133 @@
+<?php
+
+  session_start();
+
+
+?>
+
+<html>
+<head>
+    <title>Concert</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="IndexConcert.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <header>
+
+     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+       <a class="navbar-brand" href="IndexConcert.php">Accueil</a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <center>
+           <div class="collapse navbar-collapse" id="navbarCollapse">
+                 <ul class="navbar-nav mr-auto">
+                   <li class="nav-item active">
+                         <a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
+                   </li>
+                   <li class="nav-item">
+                         <a class="nav-link" href="APropos.php">À propos</a>
+                   </li>
+
+               <?php
+                 if(isset($_SESSION['email']))
+                   {
+                     //header("Refresh:0;url=IndexConcert.php");
+                     ?>
+
+                     <form method="GET" action="IndexConcert.php">
+                     <li class="nav-item">
+                       <input type="submit" value="Déconnexion" name="deconnexion" class="btn btn-outline-warning" class="deco" >
+                     </li>
+                     <?php
+                       if(isset($_GET['deconnexion']))
+                       {
+                         session_destroy();
+                         header("Refresh:0;url=IndexConcert.php");
+                        // header('location: "IndexConcert.php');
+                       }
+                         ?>
+
+                     </form>
+
+               <?php
+                   }
+
+
+
+               ?>
+
+                 </ul>
+           </div>
+       </center>
+     </nav>
+   </header>
+
+
+    <body>
+
+      
+
+<form method="GET" action="mailto:test@example.com" enctype="text/plain">
+    <div>Subject</div>
+    <input type="text" name="subject" />
+
+    <div>Name</div>
+    <input name="Name" />
+
+    <div>E-Mail</div>
+    <input name="E-Mail Address" />
+
+    <div>Message</div>
+    <textarea name="Message"></textarea>
+
+    <br/>
+    <input type="submit" value="Send" />
+
+    <input type="hidden" name="body" />
+</form>
+
+<script>
+   var form = document.getElementsByTagName('form')[0];
+   form.addEventListener('submit',contact,false);
+   function contact(e) {
+      // Prevent Default Form Submission
+      e.preventDefault();
+
+      var target = e.target || e.srcElement;
+      var i = 0;
+      var message = '';
+
+      // Loop Through All Input Fields
+      for(i = 0; i < target.length; ++i) {
+         // Check to make sure it's a value. Don't need to include Buttons
+         if(target[i].type != 'text' && target[i].type != 'textarea') {
+                // Skip to next input since this one doesn't match our rules
+            continue;
+         }
+
+         // Add Input Name and value followed by a line break
+         message += target[i].name + ': ' + target[i].value + "\r\n";
+      }
+      // Modify the hidden body input field that is required for the mailto: scheme
+      target.elements["body"].value = message;
+
+      // Submit the form since we previously stopped it. May cause recursive loop in some browsers? Should research this.
+      this.submit();
+   }
+</script>
+
+
+</body>
+
+   <!-- <footer> 
+
+   </footer> -->
+</body>
+
+</html>
