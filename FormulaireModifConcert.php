@@ -74,9 +74,9 @@ session_start();
         ?>
 
 
-        <form method="POST" action="requeteModif.php?ID=<?= $tab['ID'] ?>" enctype="multipart/form-data">
+        <form method="POST" action="requeteModif.php?Titre=<?= $tab['Titre'] ?>" enctype="multipart/form-data">
 
-            <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
+            <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
 
 
             <!-- <div class="col-3">
@@ -97,6 +97,29 @@ session_start();
             </div>
 
             <div class="col-3">
+                <select class="form-control" name="NomArtisteModif">
+                <?php
+                if (isset($_POST['NomArtisteModif']))
+                    echo "<option>".$_POST['NomArtisteModif']."</option>";
+                else
+                echo "<option>Nom Artiste<option>";
+                require 'requetesSQLTickevent.php';
+                $sql = "SELECT Nom_Artiste FROM artistes";
+                $res = mysqli_query($connexion,$sql);
+                if (!isset($_POST['NomArtisteModif']))
+                {
+                    while($data=mysqli_fetch_array($res)) 
+                    {
+                        echo '<option>'.$data["Nom_Artiste"].'</option>'; 
+                    }
+                }
+        
+                ?>
+                </select>
+            </div>
+
+
+            <div class="col-3">
                 <select class="form-control" name="SalleConcertModif">
                     <?php
                     if (isset($_POST['SalleConcertModif']))
@@ -104,13 +127,13 @@ session_start();
                     else
                         echo "<option>salle concert<option>";
                     require 'requetesSQLTickevent.php';
-                    $sql = "SELECT nom FROM salleconcerts";
+                    $sql = "SELECT Nom_Salle FROM salleconcerts";
                     $res = mysqli_query($connexion,$sql);
                     if (!isset($_POST['SalleConcertModif']))
                     {
                         while($data=mysqli_fetch_array($res))
                         {
-                            echo '<option>'.$data["nom"].'</option>';
+                            echo '<option>'.$data["Nom_Salle"].'</option>';
                         }
                     }
 

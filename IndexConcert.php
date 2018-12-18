@@ -29,7 +29,7 @@
               			<a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
             		</li>
             		<li class="nav-item">
-              			<a class="nav-link" href="#">À propos</a>
+              			<a class="nav-link" href="Apropos.php">À propos</a>
             		</li>
 
                 <?php 
@@ -65,9 +65,11 @@
     </header>
 <body>
 
+<center>
 <div class="SlideNews">
     <img src="images/SliderNews.png" class="imageNews">
 </div>
+</center>
 
   <?php 
     if(isset($_SESSION['email']))
@@ -88,7 +90,7 @@
     ?>
 
     <div class="row">
-            <?php
+    <?php
     while ($tab = mysqli_fetch_array($res))
     {
         ?>
@@ -104,7 +106,7 @@
              '</div>',
             '<div class="card-body">',
               '<h5 class="card-title">Titre: '.$tab['Titre']."</h5>",
-              ' Date : '.$tab['DateAjout']."",
+              ' Date : '.$tab['DateNews']."",
             ' <p class="card-text">Description : '.$tab['Contenu']."</p> ",
 
         '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>',

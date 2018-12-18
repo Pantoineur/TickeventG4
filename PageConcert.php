@@ -104,7 +104,7 @@
              "<img class=\"card-img-top\" src='images/".$tab['Image']."'>",
              '</div>',
             '<div class="card-body">',
-              '<h5 class="card-title">Titre: '.$tab['Titre']."</h5>",
+              '<h5 class="card-title">Nom: '.$tab['Titre']."</h5>",
             ' Date : '.$tab['Date']."",
             ' <p class="card-text">Description : '.$tab['Description']."</p> ",
         '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>',

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: orencohen
- * Date: 15/11/2018
- * Time: 10:07
- */
+
 
 require 'requetesSQLTickevent.php';
 $nomModif = $_POST['nomModif'];
@@ -12,8 +7,9 @@ $dateModif = $_POST['dateModif'];
 $descriptionModif = $_POST['descriptionModif'];
 $imageModif  = $_FILES['ImageModif']['name'];
 $Salle_ConcertModif = $_POST['SalleConcertModif'];
+$Nom_ArtisteModif = $_POST['NomArtisteModif'];
 
-$id = $_GET['ID'];
+$Titre = $_GET['Titre'];
 
 
 if($connexion == NULL)
@@ -21,7 +17,7 @@ if($connexion == NULL)
     echo 'erreur connexion base de donnees';
 }else {
 
-    $update = "UPDATE Concert SET Nom = '".$nomModif."',Date = '".$dateModif."', Description = '".$descriptionModif."',Nom_SalleConcerts = '".$Salle_ConcertModif."', Image = '".$imageModif."'  WHERE ID = '".$id."'";
+    $update = "UPDATE Concert SET Titre = '".$nomModif."',Date = '".$dateModif."', Description = '".$descriptionModif."',Nom_Salle = '".$Salle_ConcertModif."', Image = '".$imageModif."', Nom_Artiste = '".$Nom_ArtisteModif."'  WHERE Titre = '".$Titre."'";
     echo $update;
     $res = mysqli_query($connexion,"$update");
     printf("Message d'erreur:", mysqli_errno($connexion));

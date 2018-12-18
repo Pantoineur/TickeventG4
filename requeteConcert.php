@@ -12,7 +12,7 @@ if($connexion == NULL)
 {
     echo 'erreur connexion base de donnees';
 }else {
-    $recuperer = "SELECT ID,Nom,Date,SUBSTRING(Description,1,17) AS Description,Image,Nom_SalleConcerts From concert";
+    $recuperer = "SELECT Titre,Date,Image,SUBSTRING(Description,1,17) AS Description,Nom_artiste,Nom_salle From concert";
     $res = mysqli_query($connexion, "$recuperer");
 }
 ?>

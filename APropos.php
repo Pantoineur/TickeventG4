@@ -31,7 +31,7 @@
                          <a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item">
-                         <a class="nav-link" href="APropos.php">À propos</a>
+                         <a class="nav-link" href="APropos.php">Nous contacter</a>
                    </li>
 
                <?php
@@ -71,56 +71,52 @@
 
     <body>
 
+<br><br><br>
       
+      <center>
+          <?php 
+            if(isset($_SESSION['email']))
+            {
+          ?>
+          <form action="ModifierTitreContacter.php">
+          <input type="submit" class="btn btn-warning" value="Modifier Titre" />
+          </form>
+          <?php
+            }
 
-<form method="GET" action="mailto:test@example.com" enctype="text/plain">
-    <div>Subject</div>
-    <input type="text" name="subject" />
+            require 'requeteAfficherTitre.php';
 
-    <div>Name</div>
-    <input name="Name" />
+            while ($tab = mysql_fetch_array($rop))
+            {
+              ?>
+                <h1> Titre: <?php $tab['Titre'] ?> </h1>
+          <?php
+            }
+            
+          ?>
 
-    <div>E-Mail</div>
-    <input name="E-Mail Address" />
 
-    <div>Message</div>
-    <textarea name="Message"></textarea>
+      <form action="https://formspree.io/globeticks@gmail.com" method="POST">
 
-    <br/>
-    <input type="submit" value="Send" />
+        <div class="col-3">
+          <input type="text" name="Nom_Famille" placeholder="Nom de famille*" class="form-control input-sm" required ><br>
+        </div>
 
-    <input type="hidden" name="body" />
-</form>
+        <div class="col-3">
+          <input type="text" name="Prenom" placeholder="Prénom*" class="form-control input-sm" required ><br>
+        </div>
 
-<script>
-   var form = document.getElementsByTagName('form')[0];
-   form.addEventListener('submit',contact,false);
-   function contact(e) {
-      // Prevent Default Form Submission
-      e.preventDefault();
+        <div class="col-3">
+          <input type="email" name="_replyto" placeholder="E-mail*" class="form-control input-sm" required><br>
+        </div>
 
-      var target = e.target || e.srcElement;
-      var i = 0;
-      var message = '';
+        <div class="col-3">
+          <textarea class="form-control" name="Contenu" placeholder="Commentaire*" cols="23" rows="5" required></textarea><br>
+        </div>
 
-      // Loop Through All Input Fields
-      for(i = 0; i < target.length; ++i) {
-         // Check to make sure it's a value. Don't need to include Buttons
-         if(target[i].type != 'text' && target[i].type != 'textarea') {
-                // Skip to next input since this one doesn't match our rules
-            continue;
-         }
-
-         // Add Input Name and value followed by a line break
-         message += target[i].name + ': ' + target[i].value + "\r\n";
-      }
-      // Modify the hidden body input field that is required for the mailto: scheme
-      target.elements["body"].value = message;
-
-      // Submit the form since we previously stopped it. May cause recursive loop in some browsers? Should research this.
-      this.submit();
-   }
-</script>
+        <input type="submit" value="Envoyer" class="btn btn-warning">
+      </form>
+      </center>
 
 
 </body>
