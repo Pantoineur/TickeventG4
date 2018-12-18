@@ -1,28 +1,6 @@
  <?php
 
 	session_start();
-  	require 'requetesSQLTickevent.php';
-  	$rang = $_POST['Rang'];
-  	$place = $_POST['Place'];
-  	echo "$rang$place";
-  	$checkIfExists = "SELECT $rang$place from concert where nom='test' ";
-
-  	if ($rang == "Rang" || $place == "Place")
-	header("Refresh:0;url=PagePlaces.php");
-
-	if($connexion == NULL)
-	{
-		echo 'erreur connexion base de donnees';
-	}
-	else
-	{
-		$res = mysqli_query($connexion,$checkIfExists);
-		if (!$res)
-		{
-			
-		}
-	}
-
 
 ?>
 <!DOCTYPE html>
@@ -69,17 +47,27 @@
                          // header('location: "IndexConcert.php');
                         }
                           ?>
-
                       </form>
-                     
                 <?php
                     }
-
                 ?>
-
           		</ul>
         	</div>
     	</center>
   	</nav>
+    <?php
+
+    if ($_POST['Rang']== "Rang" || $_POST['Place'] == "Place")
+    {
+
+     header("Refresh:3;url=pageConcert.php");
+     ?>
+        <div class= "alert alert-danger">
+        <?php
+
+          echo "Vous n'avez pas choisi de place ou de rang.";
+    }
+    ?>
+        </div>
 </body>
 </html>
