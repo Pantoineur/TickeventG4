@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="IndexConcert.css">
 </head>
 <body>
+<header>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="IndexConcert.php">Accueil</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,34 +53,59 @@
             		</li>
 
                 <?php 
-                  if(isset($_SESSION['email']))
-                    {
+                  if(isset($_SESSION['email'])) {
                       //header("Refresh:0;url=IndexConcert.php");
                       ?>
 
                       <form method="GET" action="paiementPlaces.php">
-                      <li class="nav-item">
-                        <input type="submit" value="Déconnexion" name="deconnexion" class="btn btn-outline-warning" class="deco" >
-                      </li>
-                      <?php
-                        if(isset($_GET['deconnexion']))
-                        {
-                          session_destroy();
-                          header("Refresh:0;url=PaiementPlaces.php");
-                         // header('location: "IndexConcert.php');
-                        }
+                          <li class="nav-item">
+                              <input type="submit" value="Déconnexion" name="deconnexion"
+                                     class="btn btn-outline-warning" class="deco">
+                          </li>
+                          <?php
+                          if (isset($_GET['deconnexion'])) {
+                              session_destroy();
+                              header("Refresh:0;url=PaiementPlaces.php");
+                              // header('location: "IndexConcert.php');
+                          }
                           ?>
 
                       </form>
-                     
-                <?php
-                    }
+
+                      <?php
+                  }
 
                 ?>
+
 
           		</ul>
         	</div>
     	</center>
   	</nav>
+</header>
+
+<?php
+require 'requeteContent.php';
+
+require_once "config.php";
+?>
+
+<form action="paiementPlaces.php?Titre=<?= $tab['Titre'] ?>" method="POST" enctype="multipart/form-data" >
+    <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<?= $stripeDetails['publishableKey']?>"
+            data-amount="5099"
+            data-currency="eur"
+            data-name="<?= $tab['Titre'] ?>"
+            data-description="<?= $tab['Description'] ?>"
+            data-image="images/Logo.PNG"
+            data-locale="French"
+            data-zip-code="true">
+
+    </script>
+</form>
+<script  type="text/javascript" src="https://js.stripe.com/v3/"></script>
+
+
 </body>
 </html>
