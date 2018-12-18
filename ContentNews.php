@@ -30,7 +30,7 @@
                          <a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item">
-                         <a class="nav-link" href="#">À propos</a>
+                         <a class="nav-link" href="APropos.php">À propos</a>
                    </li>
 
                <?php
@@ -88,7 +88,7 @@
         '<br> <br> <br>',
             '<div class="titreC"> Titre: '.$tab['Titre']."</div>",
             '<div class="descriptionC"> Contenu : '.$tab['Contenu']."</div>",
-            '<div class="DateTime"> Date : '.$tab['DateAjout']."</div>";
+            '<div class="DateTime"> Date : '.$tab['DateNews']."</div>";
 
 
        if(isset($_SESSION['email']))

@@ -78,7 +78,7 @@
 
 
       <div class="col-3">
-      <input type="file"  placeholder="Image News" name="Image" class="form-control-file"/>
+      <input type="file"  placeholder="Image News" name="Image" class="form-control-file" required />
       </div>
 
       <input type="submit" value="Valider" name="Valider" class="btn btn-warning">

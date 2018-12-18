@@ -30,7 +30,7 @@
                          <a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item">
-                         <a class="nav-link" href="#">À propos</a>
+                         <a class="nav-link" href="APropos.php">À propos</a>
                    </li>
 
                <?php
@@ -75,8 +75,6 @@
 
     while ($tab = mysqli_fetch_array($res))
     {
-        echo 'salut'.$_GET['ID'];
-        echo 'salut'.$tab['ID'];
         //echo "<img src='images/".$tab['Image']."'>";
         echo '<div class=row>',
 
@@ -88,7 +86,7 @@
 
         '<div class="col-md-6" id ="gridC">',
         '<br> <br> <br>',
-            '<div class="titreC"> Nom: '.$tab['Nom']."</div>",
+            '<div class="titreC"> Nom: '.$tab['Titre']."</div>",
             '<div class="dateC" >Date : '.$tab['Date']."</div>",
             '<div class="descriptionC"> Description :'.$tab['Description']."</div>";
 
@@ -98,21 +96,21 @@
             ?>
 
 
-            <form method="POST" action="FormulaireModifConcert.php?ID=<?= $tab['ID'] ?>">
+            <form method="POST" action="FormulaireModifConcert.php?Titre=<?= $tab['Titre'] ?>">
                 <br>
-                <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
+                <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
                 <input type="submit" value="Modifier" name="Modifier" class="btn btn-warning">
             </form>
-            <form method="POST" action="requeteSupprimer.php?ID=<?= $tab['ID'] ?>">
-                <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
+            <form method="POST" action="requeteSupprimer.php?Titre=<?= $tab['Titre'] ?>">
+                <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
                 <input type="submit" value="Supprimer" name="supprimer" class="btn btn-danger">
             </form>
 
             <?php
         }
         ?>
-        <form method="post" action="PagePlaces.php?ID=<?= $tab['ID'] ?>">
-            <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>
+        <form method="post" action="PagePlaces.php?Titre=<?= $tab['Titre'] ?>">
+            <input type="hidden" name="Titre" value=" <?php '$_GET[\'Titre\']' ?>"> </input>
             <input type="submit" class="btn btn-warning" value="Réservez vos places !">
         </form>
 

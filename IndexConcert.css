@@ -20,13 +20,12 @@ body{
 }
 .SlideNews
 {
-    margin-left: 12%;
     margin-top: 2%;
-    width:300%;
+    width: 100%;
 
 }
 .imageNews{
-    width: 25%;
+    width: 85%;
 }
 
 .SlideConcert

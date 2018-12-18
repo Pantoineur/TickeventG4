@@ -13,6 +13,7 @@ $date = $_POST['Date'];
 $description = $_POST['description'];
 $image = $_FILES['Image']['name'];
 $Salle_Concert = $_POST['SalleConcert'];
+$Nom_artiste = $_POST['NomArtiste'];
 
 
 if($connexion == NULL)
@@ -26,7 +27,7 @@ if($connexion == NULL)
     $description = $_POST['description'];
     $image = $_POST['Image'];*/
 
-    $ajout = "INSERT INTO Concert (Nom,Date,Description,Image,Nom_SalleConcerts) VALUES ('".$nom."','".$date."','".$description."','$image','".$Salle_Concert."')";
+    $ajout = "INSERT INTO Concert (Titre, Date, Image, Description,Nom_Artiste, Nom_Salle) VALUES ('".$nom."','".$date."','$image','".$description."','".$Nom_artiste."','".$Salle_Concert."')";
     $res = mysqli_query($connexion,"$ajout");
     //printf("Message d'erreur:", $mysqli->errno);
 

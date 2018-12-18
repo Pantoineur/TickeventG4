@@ -60,7 +60,14 @@
         	</div>
     	</center>
       </nav>
-	<form method="POST" action="pagePlaces.php">
+<?php
+require "requeteContent.php";
+while ($tab = mysqli_fetch_array($res))
+{
+?>
+	<form method="POST" action="pagePlaces.php?Titre=<?= $tab['Titre'] ?>">
+    <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
+
 		<select name="Rang">
       <?php
         if (isset($_POST['Rang']))
@@ -68,14 +75,14 @@
         else
           echo "<option>Rang<option>";
 				require 'requetesSQLTickevent.php';
-				$sql = "SELECT nom FROM rangs";
-				$res = mysqli_query($connexion,$sql);
+				$sql = "SELECT Nom_Rang FROM places, salleconcerts,concert where places.Nom_salle = salleconcerts.Nom_salle and salleconcerts.Nom_salle = concert.Nom_salle and concert.Titre = '".$_GET['Titre']."' group by Nom_Rang";
+				$res2 = mysqli_query($connexion,"$sql");
         if (!isset($_POST['Rang']))
         {
-            while($data=mysqli_fetch_array($res)) 
-            {
-              echo '<option>'.$data["nom"].'</option>'; 
-            }
+          while($data = mysqli_fetch_array($res2)) 
+          {
+            echo '<option>'.$data["Nom_Rang"].'</option>'; 
+          }
         }
 				
 			?>
@@ -85,16 +92,19 @@
       <?php
         if (isset($_POST['Rang']))
         {
+          echo $_POST['Rang'];
       ?>
-          <form method="POST" action="paiementPlaces.php">
+          <form method="POST" action="paiementPlaces.php?Titre=<?= $tab['Titre']?>&Rang=<?= $_POST['Rang']?>">
+            <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
+            <input type="hidden" name="Rang" value="<?php '$_GET[\'Rang\']' ?>"> </input>
         		<select name="Place">
         			<option>Place</option>
         			<?php
-        			$sql = "SELECT num FROM places where Rang = '".$_POST['Rang']."'";
+        			$sql = "SELECT Num_Place FROM places, salleconcerts, concert where places.Nom_Salle = salleconcerts.Nom_Salle and salleconcerts.Nom_Salle = concert.Nom_Salle and concert.Titre = '".$_GET['Titre']."' and Nom_Rang = '".$_POST['Rang']."'";
         				$res = mysqli_query($connexion,$sql);
         				while($data=mysqli_fetch_array($res)) 
         				{
-        				   echo '<option>'.$data["num"].'</option>';
+        				   echo '<option>'.$data["Num_Place"].'</option>';
         				}
         			?>
         		</select>
@@ -102,22 +112,8 @@
           </form>
         <?php
         }
+  }
         ?>
-
-
-<form action="ConfirmationPaiement.php" method="POST">
-    <script
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
-            data-amount="5099"
-            data-currency="eur"
-            data-name="Stripe.com"
-            data-description="Example charge"
-            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-            data-locale="French"
-            data-zip-code="true">
-    </script>
-</form>
 
 
 
