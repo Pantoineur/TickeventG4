@@ -12,8 +12,10 @@ if($connexion == NULL)
 {
     echo 'erreur connexion base de donnees';
 }else {
-    $recuperer = "SELECT * From news group by DateNews desc ";
-    $res = mysqli_query($connexion, "$recuperer");
+    $recuperer = "SELECT Titre From champs where ID = 3";
+    $rop = mysqli_query($connexion, "$recuperer");
+    if (!$rop) { // add this check.
+    die('Invalid query: ' . mysql_error());
+	}
 }
 ?>
-

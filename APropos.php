@@ -74,8 +74,27 @@
 <br><br><br>
       
       <center>
+          <?php 
+            if(isset($_SESSION['email']))
+            {
+          ?>
+          <form action="ModifierTitreContacter.php">
+          <input type="submit" class="btn btn-warning" value="Modifier Titre" />
+          </form>
+          <?php
+            }
 
-      <U><h1> Nous contacter </h1></U><br><br>
+            require 'requeteAfficherTitre.php';
+
+            while ($tab = mysql_fetch_array($rop))
+            {
+              ?>
+                <h1> Titre: <?php $tab['Titre'] ?> </h1>
+          <?php
+            }
+            
+          ?>
+
 
       <form action="https://formspree.io/globeticks@gmail.com" method="POST">
 
@@ -95,7 +114,7 @@
           <textarea class="form-control" name="Contenu" placeholder="Commentaire*" cols="23" rows="5" required></textarea><br>
         </div>
 
-        <input type="submit" value="Send" class="btn btn-warning">
+        <input type="submit" value="Envoyer" class="btn btn-warning">
       </form>
       </center>
 

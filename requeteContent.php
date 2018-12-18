@@ -9,7 +9,7 @@
 
 require 'requetesSQLTickevent.php';
 
-$id = $_GET['ID'];
+$nom = $_GET['Titre'];
 
 if($connexion == NULL)
 {
@@ -17,7 +17,7 @@ if($connexion == NULL)
 }else
 {
 
-    $selection = "SELECT * From Concert WHERE ID = '".$id."'";
+    $selection = "SELECT * From Concert WHERE Titre = '".$nom."'";
     $res = mysqli_query($connexion,"$selection");
 
 }

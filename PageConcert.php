@@ -94,8 +94,8 @@
     {
         ?>
         <div class="col-md-4">
-    <form action="ContentConcert.php?ID=<?= $tab['ID'] ?>" method="post">
-        <input type="hidden" name="ID" value="<?php '$_GET[\'ID\']' ?>"> </input>
+    <form action="ContentConcert.php?Titre=<?= $tab['Titre'] ?>" method="post">
+        <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
         <?php
         //echo "<img src='images/".$tab['Image']."'>";
         echo '<center>',
@@ -104,7 +104,7 @@
              "<img class=\"card-img-top\" src='images/".$tab['Image']."'>",
              '</div>',
             '<div class="card-body">',
-              '<h5 class="card-title">Nom: '.$tab['Nom']."</h5>",
+              '<h5 class="card-title">Nom: '.$tab['Titre']."</h5>",
             ' Date : '.$tab['Date']."",
             ' <p class="card-text">Description : '.$tab['Description']."</p> ",
         '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>',
