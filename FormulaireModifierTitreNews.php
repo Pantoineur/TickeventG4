@@ -74,47 +74,16 @@
 <br><br><br>
       
       <center>
-          <?php 
-            if(isset($_SESSION['email']))
-            {
-          ?>
-          <form action="ModifierTitreContacter.php">
-          <input type="submit" class="btn btn-warning" value="Modifier Titre" />
-          </form>
-          <?php
-            }
 
-            require 'requeteAfficherTitre.php';
-
-            while ($tab = mysqli_fetch_array($res))
-            {
-                
-                echo "<h1> ".$tab['Titre']." </h1>";
-            }
-            
-          ?>
-      <br>    
-
-      <form action="https://formspree.io/globeticks@gmail.com" method="POST">
+      <form action="requeteModifierTitreNews.php" method="POST">
 
         <div class="col-3">
-          <input type="text" name="Nom_Famille" placeholder="Nom de famille*" class="form-control input-sm" required ><br>
+          <input type="text" class="form-control" name="titrenews" placeholder="Titre*" cols="23" rows="5" required></input><br>
         </div>
 
-        <div class="col-3">
-          <input type="text" name="Prenom" placeholder="Prénom*" class="form-control input-sm" required ><br>
-        </div>
-
-        <div class="col-3">
-          <input type="email" name="_replyto" placeholder="E-mail*" class="form-control input-sm" required><br>
-        </div>
-
-        <div class="col-3">
-          <textarea class="form-control" name="Contenu" placeholder="Commentaire*" cols="23" rows="5" required></textarea><br>
-        </div>
-
-        <input type="submit" value="Envoyer" class="btn btn-warning">
+        <input type="submit" value="Valider" class="btn btn-warning">
       </form>
+
       </center>
 
 
