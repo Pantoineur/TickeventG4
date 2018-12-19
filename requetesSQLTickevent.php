@@ -1,5 +1,5 @@
 <?php 
-	
+
 	$user = "dbo760871302";
 	$password = "Institutg4!";
 	$host = "db760871302.hosting-data.io";
@@ -7,6 +7,8 @@
 	$nom_base = "db760871302";
 
 	$connexion = mysqli_connect($host, $user, $password, $nom_base);
+	$mysqli = new mysqli($host, $user, $password, $nom_base);
 
 
+	
 ?>
