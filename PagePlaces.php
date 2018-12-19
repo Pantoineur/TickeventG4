@@ -75,7 +75,7 @@ while ($tab = mysqli_fetch_array($res))
         else
           echo "<option>Rang<option>";
 				require 'requetesSQLTickevent.php';
-				$sql = "SELECT Nom_Rang FROM places, salleconcerts,concert where places.Nom_salle = salleconcerts.Nom_salle and salleconcerts.Nom_salle = concert.Nom_salle and concert.Titre = '".$_GET['Titre']."' group by Nom_Rang";
+				$sql = "SELECT Nom_Rang FROM places where Titre = '".$_GET['Titre']."' group by Nom_Rang";
 				$res2 = mysqli_query($connexion,"$sql");
         if (!isset($_POST['Rang']))
         {
@@ -100,7 +100,7 @@ while ($tab = mysqli_fetch_array($res))
         		<select name="Place">
         			<option>Place</option>
         			<?php
-        			$sql = "SELECT Num_Place FROM places, salleconcerts, concert where places.Nom_Salle = salleconcerts.Nom_Salle and salleconcerts.Nom_Salle = concert.Nom_Salle and concert.Titre = '".$_GET['Titre']."' and Nom_Rang = '".$_POST['Rang']."'";
+        			$sql = "SELECT Num_Place FROM places where Nom_Rang = '".$_POST['Rang']."' and Titre = '".$_GET['Titre']."'";
         				$res = mysqli_query($connexion,$sql);
         				while($data=mysqli_fetch_array($res)) 
         				{

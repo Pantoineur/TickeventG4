@@ -66,33 +66,46 @@
         <div class= "alert alert-danger">
         <?php
 
-          echo "Vous n'avez pas choisi de place ou de rang.";
+          echo "Vous n'avez pas choisi de place ou de rang. Vous allez être redirigé vers la page des concerts.";
     }
     ?>
         </div>
 
 <?php
 require 'requeteContent.php';
+require 'requetePaiement.php';
 
-require_once "config.php";
+while ($tab = mysqli_fetch_array($res))
+{
+
+    require_once "config.php";
+    ?>
+
+    <form action="ConfirmationPaiement.php?Titre=<?= $tab['Titre'] ?>&Rang=<?= $_GET['Rang']?>&Place=<?= $_POST['Place']?>" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
+        <input type="hidden" name="Rang" value="<?php '$_GET[\'Rang\']' ?>"> </input>
+        <input type="hidden" name="Rang" value="<?php '$_GET[\'Place\']' ?>"> </input>
+
+
+
+        <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<?= $stripeDetails['publishableKey'] ?>"
+                data-amount="<?= $tab['Prix']*100 ?>"
+                data-currency="eur"
+                data-name="<?= $tab['Titre'] ?>"
+                data-description="Rang: <?= $_GET['Rang']?> Place : <?= $_POST['Place']?>"
+                data-image="images/Logo.PNG"
+                data-locale="French"
+                data-zip-code="true">
+
+        </script>
+    </form>
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+
+    <?php
+}
 ?>
-
-<form action="paiementPlaces.php?Titre=<?= $tab['Titre'] ?>" method="POST" enctype="multipart/form-data" >
-    <script
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<?= $stripeDetails['publishableKey']?>"
-            data-amount="5099"
-            data-currency="eur"
-            data-name="<?= $tab['Titre'] ?>"
-            data-description="<?= $tab['Description'] ?>"
-            data-image="images/Logo.PNG"
-            data-locale="French"
-            data-zip-code="true">
-
-    </script>
-</form>
-<script  type="text/javascript" src="https://js.stripe.com/v3/"></script>
-
 
 </body>
 </html>
