@@ -88,7 +88,10 @@
         '<br> <br> <br>',
             '<div class="titreC"> Nom: '.$tab['Titre']."</div>",
             '<div class="dateC" >Date : '.$tab['Date']."</div>",
-            '<div class="descriptionC"> Description :'.$tab['Description']."</div>";
+            '<div class="descriptionC"> Description :'.$tab['Description']."</div>",
+            '<div class="NomSalleC" >Nom Salle: '.$tab['Nom_Salle']."</div>",
+            '<div class="NomArtisteC" >Nom Artiste: '.$tab['Nom_Artiste']."</div>";
+
 
 
         if(isset($_SESSION['email']))
