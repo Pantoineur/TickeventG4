@@ -7,7 +7,7 @@
  */
 require 'requetesSQLTickevent.php';
 
-$TitreContact = $_POST['titrecontact'];
+$TitreContact = $_POST['titrenews'];
 
 
 if($connexion == NULL)
@@ -16,12 +16,12 @@ if($connexion == NULL)
 }else
 {
 
-       $update = "UPDATE champs SET titre = '".$TitreContact."' WHERE ID = 1";
+       $update = "UPDATE champs SET titre = '".$TitreContact."' WHERE ID = 3";
        $res = mysqli_query($connexion,"$update");
        echo $update;
 
 
 
 
-    header("Refresh:0;url=APropos.php");
+    header("Refresh:0;url=IndexConcert.php");
 }

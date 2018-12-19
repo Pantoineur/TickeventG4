@@ -1,7 +1,14 @@
  <?php
 
 	session_start();
-
+  require 'requetesSQLTickevent.php';
+  require 'requeteContent.php';
+  $mysqli->autocommit(FALSE);
+  $mysqli->commit();
+  while($tab = mysqli_fetch_array($res))
+{
+  $mysqli->query("UPDATE `places` SET `Disponible` = '0' WHERE `places`.`Num_Place` = '".$_POST['Place']."' AND `places`.`Nom_Rang` = '".$_GET['Rang']."' AND `places`.`Nom_Salle` = '".$tab['Nom_Salle']."' AND `places`.`Titre` =  '".$tab['Titre']."'");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,7 +102,7 @@ while ($tab = mysqli_fetch_array($res))
                 data-currency="eur"
                 data-name="<?= $tab['Titre'] ?>"
                 data-description="Rang: <?= $_GET['Rang']?> Place : <?= $_POST['Place']?>"
-                data-image="images/Logo.PNG"
+                data-image="D:\wamp64\www\Projet Globeticks\images"
                 data-locale="French"
                 data-zip-code="true">
 

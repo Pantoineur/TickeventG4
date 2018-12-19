@@ -91,14 +91,34 @@
         </form>
         </center>
 
-        <?php
-    }
+
+
+    <form action="FormulaireModifierTitrePageConcert.php">
+        <input type="submit" class="btn btn-warning" value="Modifier Titre" />
+    </form>
+
+    <?php
+        }
+    ?>
+    <center>
+    <?php
+            require 'requeteAfficherTitrePageConcert.php';
+
+            while ($tab = mysqli_fetch_array($res))
+            {
+                
+                echo "<h1> ".$tab['Titre']." </h1>";
+            }
+            
+          ?>
+    <?php
+    
 
 
 
     require "requeteConcert.php";
-    echo'<h1 class="titreConcert"> CONCERT</h1>';
     ?>
+    </center>
 
     <div class="row">
             <?php

@@ -75,18 +75,37 @@
     if(isset($_SESSION['email']))
       {
   ?>
+    <br>
+    <center>
     <form action="FormulaireAjoutNews.php">
         <input type="submit" class="btn btn-warning" value="Ajouter un News" />
     </form>
-  <?php
-      }
-  ?>
+    </center>
 
+    <form action="FormulaireModifierTitreNews.php">
+        <input type="submit" class="btn btn-warning" value="Modifier Titre" />
+    </form>
 
+    <?php
+        }
+    ?>
+    <center>
+    <?php
+          
+      require 'requeteAfficherTitreNews.php';
+
+      while ($tab = mysqli_fetch_array($res))
+        {
+                
+            echo "<h1> ".$tab['Titre']." </h1>";
+
+        }
+            
+    ?>
+  </center>
 
   <?php
     require "requeteNews.php";
-    echo'<h1 class="titreConcert"> NEWS </h1>';
     ?>
 
     <div class="row">
