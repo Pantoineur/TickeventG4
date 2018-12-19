@@ -65,40 +65,45 @@ session_start();
 </header>
 
 <?php
+require 'requetePaiement.php';
+while ($tab = mysqli_fetch_array($res)) {
 
-require_once "config.php";
+    require_once "config.php";
 
 
-
-\Stripe\Stripe::setVerifySslCerts(false);
+    \Stripe\Stripe::setVerifySslCerts(false);
 
 
 // Token is created using Checkout or Elements!
 // Get the payment token ID submitted by the form:
-$token = $_POST['stripeToken'];
-$email = $_POST['stripeEmail'];
-$id = $_GET['ID'];
+    $token = $_POST['stripeToken'];
+    $email = $_POST['stripeEmail'];
+    $Titre = $_GET['Titre'];
+    $description = 'Vous avez payé pour ce concert : "'.$Titre.'" et pour le rang "'.$_GET['Rang'].'" et la place "'.$_GET['Place'].'"';
+    $prixPaiement = $tab['Prix'];
 
-/* if(!isset($id)){
-header("Location: PageConcert.php");
-exit();
+
+    /* if(!isset($id)){
+    header("Location: PageConcert.php");
+    exit();
+    }
+
+      echo"<pre>";
+       var_dump($_POST);
+       exit();
+    */
+    $charge = \Stripe\Charge::create(array(
+        'amount' => $tab['Prix']*100,
+        'currency' => 'eur',
+        'description' => $description,
+        'source' => $token,
+        'receipt_email' => $email,
+
+    ));
+
+    echo 'Paiement reussis !!';
+    echo 'Merci pour votre confiance '.$email.',<br/> '.$description.', et pour un montant de '.$prixPaiement.'€';
 }
-
-  echo"<pre>";
-   var_dump($_POST);
-   exit();
-*/
-$charge = \Stripe\Charge::create(array(
-    'amount' => 999,
-    'currency' => 'eur',
-    'description' => 'Example charge',
-    'source' => $token,
-    'receipt_email' => $email,
-
-));
-
-echo'Paiement successfull !!'
-
 ?>
 
 <footer>
