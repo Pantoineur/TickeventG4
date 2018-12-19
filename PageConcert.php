@@ -76,9 +76,21 @@
     if(isset($_SESSION['email']))
     {
         ?>
+        <br>
+        <center>
         <form action="FormulaireAjoutConcert.php">
             <input type="submit" class="btn btn-warning" value="Ajout concert" />
         </form>
+
+        <form action="FormulaireAjoutArtiste.php">
+            <input type="submit" class="btn btn-warning" value="Ajout artiste" />
+        </form>
+
+        <form action="FormulaireAjoutSalleConcert.php">
+            <input type="submit" class="btn btn-warning" value="Ajout Salle de concert" />
+        </form>
+        </center>
+
         <?php
     }
 
