@@ -3,6 +3,7 @@
 	session_start();
   require 'requetesSQLTickevent.php';
   require 'requeteContent.php';
+  $mysqli->autocommit(FALSE);
   $mysqli->commit();
   while($tab = mysqli_fetch_array($res))
 {
