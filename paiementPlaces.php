@@ -66,7 +66,7 @@
         <div class= "alert alert-danger">
         <?php
 
-          echo "Vous n'avez pas choisi de place ou de rang.";
+          echo "Vous n'avez pas choisi de place ou de rang. Vous allez être redirigé vers la page des concerts.";
     }
     ?>
         </div>
