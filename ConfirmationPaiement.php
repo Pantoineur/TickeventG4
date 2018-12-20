@@ -100,11 +100,14 @@ while ($tab = mysqli_fetch_array($res)) {
         'receipt_email' => $email,
 
     ));
-
-    echo 'Paiement reussis !!';
+?>
+    <div class="alert alert-success">
+<?php
+    echo 'Paiement reussis !! ';
     echo 'Merci pour votre confiance '.$email.',<br/> '.$description.', et pour un montant de '.$prixPaiement.'€';
 }
 ?>
+</div>
 
 <footer>
 
