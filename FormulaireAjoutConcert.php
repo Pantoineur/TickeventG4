@@ -125,6 +125,14 @@
     </select>
     </div>
 
+      <div class="col-3">
+      <input type="number" name="NbRangs" min = "1" max = "5"  placeholder="Nombre Rangs (1-5)" class="form-control input-sm">
+      </div>
+
+      <div class="col-3">
+      <input type="number" name="NbPlaces" min = "1" max = "100"  placeholder="Nombre Places/Rangs (1-100)" class="form-control input-sm">
+      </div>
+
 
       <div class="col-3">
       <input type="file"  placeholder="Image" name="Image" class="form-control-file"/>
