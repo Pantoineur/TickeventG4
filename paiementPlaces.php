@@ -2,8 +2,7 @@
 
 	session_start();
   require 'requetesSQLTickevent.php';
-  require 'requeteContent.php';
-  $mysqli->autocommit(FALSE);
+  require 'requeteContent.php'
   $mysqli->commit();
   while($tab = mysqli_fetch_array($res))
 {
