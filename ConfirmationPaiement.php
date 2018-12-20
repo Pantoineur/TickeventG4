@@ -29,7 +29,7 @@ session_start();
                         <a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">À propos</a>
+                        <a class="nav-link" href="APropos.php">Nous Contacter</a>
                     </li>
 
                     <?php
@@ -132,10 +132,16 @@ while ($tab = mysqli_fetch_array($res)) {
 
     }
 
+?>
+    <div class="alert alert-success">
+<?php
+    echo 'Paiement reussis !! ';
+    echo 'Merci pour votre confiance '.$email.',<br/> '.$description.', et pour un montant de '.$prixPaiement.'€';
 }
 
 
 ?>
+</div>
 
 <footer>
 

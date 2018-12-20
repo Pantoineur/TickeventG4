@@ -3,6 +3,7 @@
 	session_start();
   require 'requetesSQLTickevent.php';
   require 'requeteContent.php';
+  //$mysqli->autocommit(FALSE);
   $mysqli->commit();
   while($tab = mysqli_fetch_array($res))
 {
@@ -35,7 +36,7 @@
               			<a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
             		</li>
             		<li class="nav-item">
-              			<a class="nav-link" href="#">À propos</a>
+              			<a class="nav-link" href="APropos.php">Nous Contacter</a>
             		</li>
 
                 <?php 
