@@ -71,55 +71,55 @@ require 'requetePaiement.php';
 
 while ($tab = mysqli_fetch_array($res)) {
 
-    require_once "config.php";
+require_once "config.php";
 
 
-    \Stripe\Stripe::setVerifySslCerts(false);
+\Stripe\Stripe::setVerifySslCerts(false);
 
 
 // Token is created using Checkout or Elements!
 // Get the payment token ID submitted by the form:
-    $token = $_POST['stripeToken'];
-    $email = $_POST['stripeEmail'];
-    $Titre = $_GET['Titre'];
-    $description = 'Vous avez payé pour ce concert : "'.$Titre.'" et pour le rang "'.$_GET['Rang'].'" et la place "'.$_GET['Place'].'"';
-    $prixPaiement = $tab['Prix'];
+$token = $_POST['stripeToken'];
+$email = $_POST['stripeEmail'];
+$Titre = $_GET['Titre'];
+$description = 'Vous avez payé pour ce concert : "' . $Titre . '" et pour le rang "' . $_GET['Rang'] . '" et la place "' . $_GET['Place'] . '"';
+$prixPaiement = $tab['Prix'];
 
 
-    /* if(!isset($id)){
-    header("Location: PageConcert.php");
-    exit();
-    }
+/* if(!isset($id)){
+header("Location: PageConcert.php");
+exit();
+}
 
-      echo"<pre>";
-       var_dump($_POST);
-       exit();
-    */
-    $charge = \Stripe\Charge::create(array(
-        'amount' => $tab['Prix']*100,
-        'currency' => 'eur',
-        'description' => $description,
-        'source' => $token,
-        'receipt_email' => $email,
+  echo"<pre>";
+   var_dump($_POST);
+   exit();
+*/
+$charge = \Stripe\Charge::create(array(
+    'amount' => $tab['Prix'] * 100,
+    'currency' => 'eur',
+    'description' => $description,
+    'source' => $token,
+    'receipt_email' => $email,
 
-    ));
+));
 
-    if($charge)
-    {
-        echo 'Paiement reussis !!';
-        echo 'Merci pour votre confiance '.$email.',<br/> '.$description.', et pour un montant de '.$prixPaiement.'€';
-    }
-    else{
-        echo 'paiement erreur';
-    }
+?>
+<div class="alert alert-success">
+    <?php
+    echo 'Paiement reussis !!';
+    echo 'Merci pour votre confiance ' . $email . ',<br/> ' . $description . ', et pour un montant de ' . $prixPaiement . '€';
+    ?>
+</div>
+<?php
+
 
 
     require 'requetesSQLTickevent.php';
 
-    if($connexion == NULL)
-    {
+    if ($connexion == NULL) {
         echo 'erreur connexion base de donnees';
-    }else {
+    } else {
 
         $Nom_Salle = $tab['Nom_Salle'];
         $Titre = $_GET['Titre'];
@@ -127,21 +127,13 @@ while ($tab = mysqli_fetch_array($res)) {
         $Nom_Rang = $_GET['Rang'];
         $token = $_POST['stripeToken'];
 
-        $ajout = "INSERT INTO reservations (Nom_Salle, Titre, Num_Place, Nom_Rang,Titre_Resa, Email) VALUES ('" . $Nom_Salle . "','" . $Titre . "','" . $Num_Place . "','" . $Nom_Rang . "','" . $token . "','".$email."')";
+        $ajout = "INSERT INTO reservations (Nom_Salle, Titre, Num_Place, Nom_Rang,Titre_Resa, Email) VALUES ('" . $Nom_Salle . "','" . $Titre . "','" . $Num_Place . "','" . $Nom_Rang . "','" . $token . "','" . $email . "')";
         $res = mysqli_query($connexion, "$ajout");
 
     }
+    }
 
 ?>
-    <div class="alert alert-success">
-<?php
-    echo 'Paiement reussis !! ';
-    echo 'Merci pour votre confiance '.$email.',<br/> '.$description.', et pour un montant de '.$prixPaiement.'€';
-}
-
-
-?>
-</div>
 
 <footer>
 
