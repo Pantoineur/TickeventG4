@@ -65,7 +65,10 @@ session_start();
 </header>
 
 <?php
+
 require 'requetePaiement.php';
+
+
 while ($tab = mysqli_fetch_array($res)) {
 
     require_once "config.php";
@@ -101,9 +104,37 @@ while ($tab = mysqli_fetch_array($res)) {
 
     ));
 
-    echo 'Paiement reussis !!';
-    echo 'Merci pour votre confiance '.$email.',<br/> '.$description.', et pour un montant de '.$prixPaiement.'€';
+    if($charge)
+    {
+        echo 'Paiement reussis !!';
+        echo 'Merci pour votre confiance '.$email.',<br/> '.$description.', et pour un montant de '.$prixPaiement.'€';
+    }
+    else{
+        echo 'paiement erreur';
+    }
+
+
+    require 'requetesSQLTickevent.php';
+
+    if($connexion == NULL)
+    {
+        echo 'erreur connexion base de donnees';
+    }else {
+
+        $Nom_Salle = $tab['Nom_Salle'];
+        $Titre = $_GET['Titre'];
+        $Num_Place = $_GET['Place'];
+        $Nom_Rang = $_GET['Rang'];
+        $token = $_POST['stripeToken'];
+
+        $ajout = "INSERT INTO reservations (Nom_Salle, Titre, Num_Place, Nom_Rang,Titre_Resa, Email) VALUES ('" . $Nom_Salle . "','" . $Titre . "','" . $Num_Place . "','" . $Nom_Rang . "','" . $token . "','".$email."')";
+        $res = mysqli_query($connexion, "$ajout");
+
+    }
+
 }
+
+
 ?>
 
 <footer>

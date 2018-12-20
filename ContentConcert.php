@@ -112,8 +112,10 @@
             <?php
         }
         ?>
-        <form method="post" action="PagePlaces.php?Titre=<?= $tab['Titre'] ?>">
+        <form method="post" action="PagePlaces.php?Titre=<?= $tab['Titre'] ?>&Salle=<?= $tab['Nom_Salle'] ?>">
             <input type="hidden" name="Titre" value=" <?php '$_GET[\'Titre\']' ?>"> </input>
+            <input type="hidden" name="Salle" value=" <?php '$_GET[\'Nom_Salle\']' ?>"> </input>
+
             <input type="submit" class="btn btn-warning" value="Réservez vos places !">
         </form>
 
