@@ -137,8 +137,10 @@
              '</div>',
             '<div class="card-body">',
               '<h5 class="card-title">Nom: '.$tab['Titre']."</h5>",
-            ' Date : '.$tab['Date']."",
-            ' <p class="card-text">Description : '.$tab['Description']."</p> ",
+            ' Date : '.$tab['Date']."</br>",
+            ' Description : '.$tab['Description']."</br> ",
+            ' Nom Artiste  : '.$tab['Nom_Artiste']."</br> ",
+            ' Nom Salle  : '.$tab['Nom_Salle']."</br></br> ",
         '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>',
             '</center>';
 
