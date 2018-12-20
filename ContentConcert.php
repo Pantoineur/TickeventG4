@@ -30,7 +30,7 @@
                          <a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item">
-                         <a class="nav-link" href="APropos.php">À propos</a>
+                         <a class="nav-link" href="APropos.php">Nous Contacter</a>
                    </li>
 
                <?php
@@ -39,7 +39,7 @@
                      //header("Refresh:0;url=IndexConcert.php");
                      ?>
 
-                     <form method="GET" action="IndexConcert.php">
+                     <form method="GET" action="requeteSupprimer.php">
                      <li class="nav-item">
                        <input type="submit" value="Déconnexion" name="deconnexion" class="btn btn-outline-warning" class="deco" >
                      </li>
@@ -112,8 +112,10 @@
             <?php
         }
         ?>
-        <form method="post" action="PagePlaces.php?Titre=<?= $tab['Titre'] ?>">
+        <form method="post" action="PagePlaces.php?Titre=<?= $tab['Titre'] ?>&Salle=<?= $tab['Nom_Salle'] ?>">
             <input type="hidden" name="Titre" value=" <?php '$_GET[\'Titre\']' ?>"> </input>
+            <input type="hidden" name="Salle" value=" <?php '$_GET[\'Nom_Salle\']' ?>"> </input>
+
             <input type="submit" class="btn btn-warning" value="Réservez vos places !">
         </form>
 

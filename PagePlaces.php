@@ -26,7 +26,7 @@
               			<a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
             		</li>
             		<li class="nav-item">
-              			<a class="nav-link" href="#">À propos</a>
+              			<a class="nav-link" href="APropos.php">Nous Contacter</a>
             		</li>
 
                 <?php 
@@ -65,10 +65,12 @@ require "requeteContent.php";
 while ($tab = mysqli_fetch_array($res))
 {
 ?>
-	<form method="POST" action="pagePlaces.php?Titre=<?= $tab['Titre'] ?>">
+	<form method="POST" action="pagePlaces.php?Titre=<?= $tab['Titre'] ?>&Salle=<?= $tab['Nom_Salle'] ?>">
     <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
+        <input type="hidden" name="Salle" value="<?php '$_GET[\'Nom_Salle\']' ?>"> </input>
 
-		<select name="Rang">
+
+        <select name="Rang">
       <?php
         if (isset($_POST['Rang']))
           echo "<option>".$_POST['Rang']."</option>";
@@ -94,10 +96,12 @@ while ($tab = mysqli_fetch_array($res))
         {
           echo $_POST['Rang'];
       ?>
-          <form method="POST" action="paiementPlaces.php?Titre=<?= $tab['Titre']?>&Rang=<?= $_POST['Rang']?>">
+          <form method="POST" action="paiementPlaces.php?Titre=<?= $tab['Titre']?>&Rang=<?= $_POST['Rang']?>&Salle=<?= $tab['Nom_Salle'] ?>">
             <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
             <input type="hidden" name="Rang" value="<?php '$_GET[\'Rang\']' ?>"> </input>
-        		<select name="Place">
+              <input type="hidden" name="Salle" value="<?php '$_GET[\'Nom_Salle\']' ?>"> </input>
+
+              <select name="Place">
         			<option>Place</option>
         			<?php
         			$sql = "SELECT Num_Place FROM places where Nom_Rang = '".$_POST['Rang']."' and Titre = '".$_GET['Titre']."'";

@@ -6,7 +6,9 @@
   $mysqli->commit();
   while($tab = mysqli_fetch_array($res))
 {
-  $mysqli->query("UPDATE `places` SET `Disponible` = '0' WHERE `places`.`Num_Place` = '".$_POST['Place']."' AND `places`.`Nom_Rang` = '".$_GET['Rang']."' AND `places`.`Nom_Salle` = '".$tab['Nom_Salle']."' AND `places`.`Titre` =  '".$tab['Titre']."'");
+    //$mysqli->query("UPDATE `places` SET `Disponible` = '0' WHERE `places`.`Num_Place` = '".$_POST['Place']."' AND `places`.`Nom_Rang` = '".$_GET['Rang']."' AND `places`.`Nom_Salle` = '".$tab['Nom_Salle']."' AND `places`.`Titre` =  '".$tab['Titre']."'");
+
+    $mysqli->query("UPDATE Places SET Disponible = '0' WHERE Places.Num_Place = '".$_POST['Place']."' AND Places.Nom_Rang = '".$_GET['Rang']."' AND Places.Nom_Salle = '".$tab['Nom_Salle']."' AND Places.Titre =  '".$tab['Titre']."'");
 }
 ?>
 <!DOCTYPE html>
@@ -33,7 +35,7 @@
               			<a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
             		</li>
             		<li class="nav-item">
-              			<a class="nav-link" href="#">À propos</a>
+              			<a class="nav-link" href="APropos.php">Nous Contacter</a>
             		</li>
 
                 <?php 
@@ -78,39 +80,43 @@
         </div>
 
 <?php
-require 'requeteContent.php';
-require 'requetePaiement.php';
+/*require 'requeteContent.php';
+while ($tab = mysqli_fetch_array($res)) {
 
-while ($tab = mysqli_fetch_array($res))
-{
+    echo $tab['Nom_Salle'];
+    echo $_GET['Nom_Salle'];*/
 
-    require_once "config.php";
-    ?>
+    require 'requetePaiement.php';
+    while ($tab = mysqli_fetch_array($res)) {
 
-    <form action="ConfirmationPaiement.php?Titre=<?= $tab['Titre'] ?>&Rang=<?= $_GET['Rang']?>&Place=<?= $_POST['Place']?>" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
-        <input type="hidden" name="Rang" value="<?php '$_GET[\'Rang\']' ?>"> </input>
-        <input type="hidden" name="Rang" value="<?php '$_GET[\'Place\']' ?>"> </input>
+        require_once "config.php";
+        ?>
+
+        <form action="ConfirmationPaiement.php?Titre=<?= $tab['Titre'] ?>&Salle=<?= $tab['Nom_Salle'] ?>&Rang=<?= $_GET['Rang'] ?>&Place=<?= $_POST['Place'] ?>"
+              method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="Titre" value="<?php '$_GET[\'Titre\']' ?>"> </input>
+            <input type="hidden" name="Rang" value="<?php '$_GET[\'Rang\']' ?>"> </input>
+            <input type="hidden" name="Salle" value="<?php '$_GET[\'Nom_Salle\']' ?>"> </input>
 
 
+            <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="<?= $stripeDetails['publishableKey'] ?>"
+                    data-amount="<?= $tab['Prix'] * 100 ?>"
+                    data-currency="eur"
+                    data-name="<?= $tab['Titre'] ?>"
+                    data-description="Rang: <?= $_GET['Rang'] ?> Place : <?= $_POST['Place'] ?>"
+                    data-image="images/Logo.PNG"
+                    data-locale="French"
+                    data-zip-code="true">
 
-        <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<?= $stripeDetails['publishableKey'] ?>"
-                data-amount="<?= $tab['Prix']*100 ?>"
-                data-currency="eur"
-                data-name="<?= $tab['Titre'] ?>"
-                data-description="Rang: <?= $_GET['Rang']?> Place : <?= $_POST['Place']?>"
-                data-image="D:\wamp64\www\Projet Globeticks\images"
-                data-locale="French"
-                data-zip-code="true">
+            </script>
+        </form>
+        <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 
-        </script>
-    </form>
-    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+        <?php
+    }
 
-<?php
-}
 ?>
 
 </script>

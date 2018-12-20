@@ -13,7 +13,7 @@ if($connexion == NULL)
     where p.Nom_Salle = s.Nom_Salle and s.Nom_Salle = c.Nom_Salle and c.Titre = '".$_GET['Titre']."'
     and nom_rang = '".$_POST['Rang']."' and num_places = '".$_POST['Place']."'";*/
 
-  	$selection = "SELECT Prix, Titre from Rangs, concert where Nom_Rang = '".$_GET['Rang']."' and Titre = '".$_GET['Titre']."'";
+  	$selection = "SELECT Prix, Titre, Nom_Salle from Rangs, concert where Nom_Rang = '".$_GET['Rang']."' and Titre = '".$_GET['Titre']."'";
 
     $res = mysqli_query($connexion,"$selection");
 

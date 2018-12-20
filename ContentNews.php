@@ -108,10 +108,6 @@
             <?php
         }
         ?>
-         <form method="post" action="PagePlaces.php?ID=<?= $tab['ID'] ?>">
-            <input type="hidden" name="ID" value=" <?php '$_GET[\'ID\']' ?>"> </input>
-            <input type="submit" class="btn btn-warning" value="Réservez vos places !">
-        </form>
 
 
         </div> </div>
