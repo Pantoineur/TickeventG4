@@ -3,7 +3,7 @@
 	session_start();
   require 'requetesSQLTickevent.php';
   require 'requeteContent.php';
-  $mysqli->autocommit(FALSE);
+  //$mysqli->autocommit(FALSE);
   $mysqli->commit();
   while($tab = mysqli_fetch_array($res))
 {
@@ -34,7 +34,7 @@
               			<a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
             		</li>
             		<li class="nav-item">
-              			<a class="nav-link" href="#">À propos</a>
+              			<a class="nav-link" href="APropos.php">Nous Contacter</a>
             		</li>
 
                 <?php 
@@ -102,7 +102,7 @@ while ($tab = mysqli_fetch_array($res))
                 data-currency="eur"
                 data-name="<?= $tab['Titre'] ?>"
                 data-description="Rang: <?= $_GET['Rang']?> Place : <?= $_POST['Place']?>"
-                data-image="D:\wamp64\www\Projet Globeticks\images"
+                data-image="images/Logo.PNG"
                 data-locale="French"
                 data-zip-code="true">
 

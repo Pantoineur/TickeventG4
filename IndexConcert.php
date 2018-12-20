@@ -29,7 +29,7 @@
               			<a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
             		</li>
             		<li class="nav-item">
-              			<a class="nav-link" href="Apropos.php">À propos</a>
+              			<a class="nav-link" href="APropos.php">Nous Contacter</a>
             		</li>
 
                 <?php 
@@ -128,7 +128,7 @@
               ' Date : '.$tab['DateNews']."",
             ' <p class="card-text">Description : '.$tab['Contenu']."</p> ",
 
-        '<input type="submit" class="btn btn-primary" value="Réservez"> </input></div></div>',
+        '<input type="submit" class="btn btn-primary" value="Ouvrir"> </input></div></div>',
             '</center>';
 
         //'<div class="row">',

@@ -31,7 +31,7 @@
                          <a class="nav-link" href="PageConcert.php">Concert <span class="sr-only">(current)</span></a>
                    </li>
                    <li class="nav-item">
-                         <a class="nav-link" href="APropos.php">Nous contacter</a>
+                         <a class="nav-link" href="APropos.php">Nous Contacter</a>
                    </li>
 
                <?php
