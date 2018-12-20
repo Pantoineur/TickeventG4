@@ -2,7 +2,7 @@
 
 	session_start();
   require 'requetesSQLTickevent.php';
-  require 'requeteContent.php'
+  require 'requeteContent.php';
   $mysqli->commit();
   while($tab = mysqli_fetch_array($res))
 {
@@ -109,9 +109,11 @@ while ($tab = mysqli_fetch_array($res))
     </form>
     <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 
-    <?php
+<?php
 }
 ?>
+
+</script>
 
 </body>
 </html>
